@@ -2,20 +2,18 @@ import React, {useState, useEffect} from 'react';
 import {Form, Button, Input} from "antd";
 //import {  } from "next-auth/client";
 import { useRouter } from "next/router";
-import { useAuth } from "../../../contexts/auth";
-import api from '../../../api/api';
-import User from '../../../api/user';
-import Routes from '../../../constants/Routes';
+import { useAuth } from "../contexts/auth";
+import api from '../api/api';
+import User from '../api/user';
+import Routes from '../constants/Routes';
+import withoutAuth from '../hocs/withoutAuth';
+import PropTypes from 'prop-types';
 
 
 
+const registerPage = () => {
 
-export default function RegisterForm(props) {
-  //  const { session} = useSession();
-    const router = useRouter();
 
-    
-    const {showLoginForm} = props;
 
     const validateMessages = {
         required: '${label} is required!',
@@ -26,19 +24,10 @@ export default function RegisterForm(props) {
 
 
     const [result, setResult] = useState("");
-    const [errorsList, setErrorsList] = useState([]);
     const [errors, setErrors] = useState("");
     const [userInfo, setUserInfo] = useState(null);
     
     const {register} = useAuth();
-
-    // useEffect(() => {
-        
-    //     if (!session) {
-    //         router.push(Routes.LOGIN);
-    //     }
-    // });
-
 
     const onFinish =  async (formData) => {
 
@@ -46,61 +35,61 @@ export default function RegisterForm(props) {
 
         setResult('Enviando datos');
 
+    try{
 
-        try{
+        console.log(formData)
 
-            console.log(formData)
-
-            const userData = {
-                ...formData
-            
-            };
-            const response = await register(userData );
-            
-            console.log('response', response);
+        const userData = {
+            ...formData
         
-            setUserInfo(response.data);
+        };
+        const response = await register(userData );
+        
+    
+        setUserInfo(response.data);
 
-            setResult('Usuario registrado correctamente');
+        setResult('Usuario registrado correctamente');
+        
+        setErrors("");
+    }catch(e){
+        console.log('e',e.response);
 
-           // console.log(response.data.email);
-            setErrors("");
-        }catch(e){
+        const {response} = e;
 
-            console.log('error', e.response);
-            console.log('e ',e.data.errors.email);
+        setResult('Ocurrio un error');
 
-            setErrors(e.data.errors.email);
+        
 
-            const {response} = e;
+        if(response){
 
-            setResult('Ocurrio un error');
+            const errors = response.status;
 
-            
+            console.log('error: ' ,e.response.status)
 
-            if(response){
-
-                if (response.data.errors) {
-                    
-                    const errors = response.data.errors;
-                    // const errorList = Object.values(errors);
-                    const newErrorList = [];
-          
-                    for (let field in errors) {
-                      newErrorList.push(...errors[field]);
-                    }
-                    console.log("errorList", newErrorList);
-          
-                    setErrorsList(newErrorList);
-                  }
+            if (errors === 400){
+                setErrors("email ya registrado")
             }
 
-        }
+            if(response.data.errors){
 
-        
+              
+           
+                const errorList = [];
+
+                for(let field in errors){
+                    errorList.push(...errors[field]);     
+                }
+
+                console.log("errorlist", errorList);
+                setErrors(errorList)
+            }
+        }
 
     }
 
+    
+
+}
     return (
         <Form labelCol={{span:8}} className='login-form'  onFinish={onFinish} validateMessages={validateMessages}>
             <Form.Item
@@ -168,18 +157,21 @@ export default function RegisterForm(props) {
                 Nombre: {userInfo.name}
                 token : {userInfo.token}
                 </div>}
-{/* 
-                {errorsList.length > 0 && (
-          <ul>
-            {errorsList.map((error) => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
-        )} */}
 
-        {errors.length >0 &&(
-            <h1>{errors}</h1>
-        )}
+                {
+                    errors.length >0 && <h1>{errors}</h1> 
+                }
+                    
+                {/* {
+                    errors.length > 0 && <ul>
+                        {errors.map((error)=>(
+                            <li>{error}</li>
+    ))}
+
+                    </ul>
+                } */}
         </Form>
-    )
-}
+    );
+};
+
+export default withoutAuth(registerPage) ;

@@ -7,12 +7,14 @@
             border: 1px solid $border-grey-light;
             font-size: 16px;
         }
+
+        
     }
 
     .actions{
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: flex-end !important;
     }
 
     .submit{
