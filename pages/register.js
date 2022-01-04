@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Form, Button, Input} from "antd";
 //import {  } from "next-auth/client";
+import BasicLayout from "../layouts/BasicLayout";
+
 import { useRouter } from "next/router";
 import { useAuth } from "../contexts/auth";
 import api from '../api/api';
@@ -91,6 +93,8 @@ const registerPage = () => {
 
 }
     return (
+        <BasicLayout>
+
         <Form labelCol={{span:8}} className='login-form'  onFinish={onFinish} validateMessages={validateMessages}>
             <Form.Item
             label="Nombre"
@@ -171,6 +175,8 @@ const registerPage = () => {
                     </ul>
                 } */}
         </Form>
+        </BasicLayout>
+
     );
 };
 

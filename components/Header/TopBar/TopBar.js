@@ -38,6 +38,6 @@ function Logo(){
 
 function Searchc(){
     return(
-        <Search placeholder="input search text" allowClear style={{ width: 250 }} />
+        <Search placeholder="input search text" allowClear style={{ width: 220 }} />
     )
 }

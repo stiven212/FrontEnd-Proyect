@@ -54,7 +54,7 @@ function useAuthProvider() {
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
         //alert("Email ya en uso");//
-        alert(error.response.data.errors.email);
+        //alert(error.response.data.errors.email);
         
         console.log(error.response.data);
         console.log(error.response.status);
@@ -83,7 +83,7 @@ function useAuthProvider() {
       if (error.response) {
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
-        alert(error.response.data.message);
+        alert(error.response.data.error);
         console.log(error.response.data);
         console.log(error.response.status);
         console.log(error.response.headers);
