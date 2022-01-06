@@ -52,7 +52,7 @@ export default function LoginForm(props) {
             label= "Contraseña"
             name="password"
             rules={[
-                {required:true, message: 'Ingresa tu contraseña', min:6, message:'Ingrese una contraseña de minimo 6 caracteres'}
+                {required:true, message: 'Ingresa tu contraseña'    }
             ]}
             >
                 

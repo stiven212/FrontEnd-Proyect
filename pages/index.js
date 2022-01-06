@@ -1,9 +1,226 @@
 import BasicLayout from "../layouts/BasicLayout";
+import { Row, Col, Divider } from 'antd';
+import { Carousel } from 'antd';
+import { Image } from 'antd';
+import { Button } from 'antd';
+
+
 export default function Home() {
+
+  const style = { background: '#0092ff', padding: '8px 0' };
+  const contentStyle = {
+    height: '350px',
+    color: '#fff',
+    lineHeight: '220px',
+    textAlign: 'center',
+   // background: '#364d79',
+
+    
+  };
+  const styles= {
+    height: '275px',
+    
+  }
+  
+
+
+
   return (
     <BasicLayout>
       <h1>Estamos en la home</h1>
+
+      <Divider orientation="left">Carrousel</Divider>
+    <Row gutter={16} style={{justifyContent:'center'}}>
+      <Col className="gutter-row" span={22}>
+      <Carousel autoplay>
+    <div>
       
+       
+        <a href="https://example.com" target="_blank">
+        <h3 style={contentStyle} id="first">
+        </h3>
+        </a>
+     
+    </div>
+    <div>
+    <a href="https://example.com" target="_blank">
+
+      <h3 style={contentStyle} id="second">2</h3>
+
+      </a>
+
+    </div>
+    <div>
+    <a href="https://example.com" target="_blank">
+      <h3 style={contentStyle} id="third">3</h3>
+      </a>
+
+    </div>
+    <div>
+    <a href="https://example.com" target="_blank">
+
+      <h3 style={contentStyle} id="four">4</h3>
+      </a>
+
+    </div>
+    <div>
+
+    <a href="https://example.com" target="_blank">
+
+      <h3 style={contentStyle} id="five">5</h3>
+      </a>
+
+    </div>
+  </Carousel>
+       </Col>
+    </Row>
+    <Divider orientation="left">Products</Divider>
+
+    <Row gutter={[2,16]} style={{justifyContent:'center'}}>
+    <Col className="gutter-row" lg={{span:5}} md={{span:10}} sm={{span:20}}  >
+    <Image
+      width={200}
+      preview={false}
+      style={styles} 
+      src="https://media.gq.com.mx/photos/616d8b8b7cf20cb28245520c/1:1/w_1999,h_1999,c_limit/ropa-casual-de-hombre-con-saco-como-combinar-con-que-usar.jpg"
+    />      
+    <div class="overlay">
+    <div class="text">Hombres</div>
+    </div>
+    
+    </Col>
+      <Col className="gutter-row" lg={{span:5, offset:1}} md={{span:10, offset:2}} sm={{span:20}} >
+      <Image
+      width={200}
+      preview={false}
+      style={styles} 
+      src="https://www.myoutfie.com/historias/wp-content/uploads/2019/10/ropa-mujer-casual-5.jpg"
+    />      
+    <div class="overlay">
+    <div class="text">Mujeres</div>
+    </div>
+    
+    </Col>
+      <Col className="gutter-row" lg={{span:5, offset:1}} md={{span:10}} sm={{span:20}}>
+      <Image
+      width={200}
+      preview={false}
+      style={styles} 
+      src="https://i.pinimg.com/550x/d6/58/70/d65870a3279c9168b3a3406634d1b370.jpg"
+    />      
+    <div class="overlay">
+    <div class="text">Niños</div>
+    </div>
+    
+    </Col>
+      <Col className="gutter-row" lg={{span:5, offset:1}} md={{span:10, offset:2}} sm={{span:20}}>
+      <Image
+      width={200}
+      preview={false}
+      style={styles} 
+      src="https://i.pinimg.com/originals/a0/26/17/a026174b67fb5027c443da5c22bdf850.jpg"
+    />      
+    <div class="overlay">
+    <div class="text">Niñas</div>
+    </div>
+    </Col>
+    </Row>
+
+    <Divider orientation="left">Ofertas</Divider>
+
+    <Row gutter={[2,16]} style={{justifyContent:'center'}}>
+
+    <Col className="gutter-row" span={22}>
+      <Carousel autoplay>
+    <div>
+      
+       
+        <a href="https://example.com" target="_blank">
+        <h3 style={contentStyle} id="second">
+        </h3>
+        </a>
+     
+    </div>
+    
+  </Carousel>
+       </Col>
+    </Row>
+
+    <Divider orientation="left">Mas ofertas</Divider>
+
+    <Row gutter={[2,32]} style={{justifyContent:'center'}}>
+    <Col className="gutter-row" lg={{span:5}} md={{span:10}} sm={{span:20}}  >
+    <Image
+      width={200}
+      preview={false}
+      style={styles} 
+      src="https://res.cloudinary.com/teepublic/image/private/s--nIkujgff--/t_Resized%20Artwork/c_crop,x_10,y_10/c_fit,w_447/c_crop,g_north_west,h_626,w_470,x_-14,y_-68/g_north_west,u_upload:v1462829015:production:blanks:mtl53ofohwq5goqjo9ke,x_-409,y_-393/b_rgb:eeeeee/c_limit,f_auto,h_630,q_90,w_630/v1591818582/production/designs/11196699_0.jpg"
+    />      
+    <div class="overlay">
+    <div class="text">Camisetas</div>
+    </div>
+    
+    </Col>
+      <Col className="gutter-row" lg={{span:5, offset:1}} md={{span:10, offset:2}} sm={{span:20}} >
+      <Image
+      width={200}
+      preview={false}
+      style={styles} 
+      src="https://i.pinimg.com/originals/6f/cb/f6/6fcbf6315f27232300dbe3a77bc29610.png"
+    />      
+    <div class="overlay">
+    <div class="text">Gorras</div>
+    </div>
+    
+    </Col>
+      <Col className="gutter-row" lg={{span:5, offset:1}} md={{span:10}} sm={{span:20}}>
+      <Image
+      width={200}
+      preview={false}
+      style={styles} 
+      src="https://www.brildor.com/blog/wp-content/uploads/2019/11/como-sublimar-tazas-1-e1574069564818.png"
+    />      
+    <div class="overlay">
+    <div class="text">Tazas</div>
+    </div>
+    
+    </Col>
+      <Col className="gutter-row" lg={{span:5, offset:1}} md={{span:10, offset:2}} sm={{span:20}}>
+      <Image
+      width={200}
+      preview={false}
+      style={styles} 
+      src="https://textilesjb.com/wp-content/uploads/2020/09/MASCARILLA-PZ.png"
+    />      
+    <div class="overlay">
+    <div class="text">Macarillas</div>
+    </div>
+    </Col>
+    </Row>
+
+    <Row gutter={[2,32]} style={{justifyContent:'center'}}>
+
+      <Col>
+
+      <div className="registrate">
+        <Row className="centered">
+          <Col span={12}>
+          <h2 >¿Aun no estas registrado? </h2>
+          </Col>
+          <Col className="centerbutton" span={12}>
+
+          <Button type="primary" size="large"><b>Registrate ahora</b></Button>
+          </  Col>
+
+        </Row>
+
+      </div>
+      </Col>
+
+    </Row>
+
+    
+    
     </BasicLayout>
   )
 }

@@ -1,0 +1,50 @@
+.top{
+    color: white;
+
+    h1{
+        color: white;
+    }
+
+    .ant-layout{
+        background-color: black;
+    }
+    margin-top: 1.3em;
+    margin-bottom: 1em;
+    &__left{
+        margin-top: 1.3em;
+
+        ul{
+            display: flex !important;
+            list-style: none;
+            padding: 0;
+            li{
+                
+                margin-right: 1em;
+            }
+            a:hover{
+                .anticon{
+
+                    font-size: 2.3em !important;
+                }
+            }
+        }
+    }
+
+    &__right{
+
+        .ant-layout{
+            .ant-row{
+                .ant-col{
+                    h4{
+                        text-align: end;
+                    }
+                    h3:hover{
+                        color: rgb(161, 143, 143);
+                    }
+                }
+            }
+        }
+
+    }
+    
+}

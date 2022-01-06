@@ -18,5 +18,105 @@
         &::-webkit-scrollbar{
             display: none;
         }
+
+        .ant-row{
+            .ant-col-22{
+                .ant-carousel{
+                    .slick-slider{
+                        .slick-list{
+
+                            .slick-track{
+                                .slick-slide{
+                                    #first{
+
+                                        background-image: url(https://imagenes.lainformacion.com/files/image_656_370/uploads/imagenes/2018/12/15/5c14da80ed56f.jpeg);
+                                    }
+                                    #second{
+                                        background-image: url(https://pbs.twimg.com/media/Dw4pTJPWsAIPlQg.jpg);
+
+
+                                    }
+                                    #third{
+                                        background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMo4mQUoynhgpUTtLbojUjSqVS20jUGZVnjw&usqp=CAU);
+
+                                    }
+                                    #four{
+                                        background-image: url(https://review.chinabrands.com/chinabrands/seo/image/20181224/promocion_ventas.jpg);
+
+                                    }
+                                    #five{
+                                        background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReyJ_pUdtcJdXvqpXgUHkKlWnk40EiLM8QOA&usqp=CAU);
+
+                                    }
+                                    
+                                }
+                            }
+                        }
+
+                        
+                    }
+                }
+
+            }
+            
+        }
+        .ant-row{
+            .ant-col-sm-20{
+               // background-color: violet;
+             
+
+                * {box-sizing: border-box;}
+
+                .ant-image{
+                    display: block;
+                    width: 100% !important;
+                    height: auto;
+                }
+                .overlay{
+                    position: absolute; 
+                    bottom: 0; 
+                    background: rgb(0, 0, 0);
+                    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+                    color: #f1f1f1; 
+                    width: 100%;
+                    transition: .5s ease;
+                    opacity:0;
+                    color: white;
+                    font-size: 20px;
+                    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                    padding: 20px;
+                    text-align: center;
+                }
+                
+            }
+            .gutter-row:hover .overlay {
+                opacity: 1;
+              }
+
+              .registrate{
+                margin: 50px;
+                height: 200px ;
+                    width: 600px;
+                  background-color: rgba(82, 217, 112, 1);
+                  border: 5px solid black;
+                  border-radius: 40px;
+
+                  .centered{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    display: inline-flex;
+                    h2{
+
+                        color: white;
+                    }
+                    .centerbutton{
+                        transform: translate(-10%, 25%);
+                    }
+                  }
+              }
+
+        }
     }
 }

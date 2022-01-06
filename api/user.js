@@ -4,6 +4,8 @@ const User = {
   register: (userData) => {
     return api.post("/register", {
       ...userData,
+      role: "ROLE_USER",
+
     });
   },
   login: (data) => {
