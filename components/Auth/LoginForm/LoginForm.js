@@ -7,13 +7,12 @@ import User from '../../../api/user';
 
 
 export default function LoginForm(props) {
-    const {showRegisterForm} = props;
+    const {showRegisterForm, showForgotForm} = props;
     const [loading, setLoading] = useState(false);
    // const auth = useAuth();
    const [result, setResult] = useState("");
    const [userInfo, setUserInfo] = useState(null);
    
-   const [email, setEmail] = useState("");
    
    const {login} = useAuth();
 
@@ -23,7 +22,6 @@ export default function LoginForm(props) {
         setUserInfo(null);
         setResult("Ingresando");
 
-        setEmail(formData.email);
         try{
             console.log(formData)
             const userData = {
@@ -43,12 +41,7 @@ export default function LoginForm(props) {
     }
 
 
-    const resetPassword = () => {
-
-        console.log(email);
-        
-
-    }
+    
     return (
         <Form labelCol={{span:8}} className='login-form' onFinish={onFinish}>
             <Form.Item
@@ -85,7 +78,7 @@ export default function LoginForm(props) {
                     <Button htmlType='submit' className='submit' >
                         Ingresar
                     </Button>
-                    <Button type="link" onClick={resetPassword}>¿Has olvidado la contraseña?</Button>
+                    <Button type="link" onClick={showForgotForm}>¿Has olvidado la contraseña?</Button>
                     </div>
                 </div>
                 </Form.Item>

@@ -17,6 +17,9 @@ const User = {
   getAuthenticatedUser: () => {
     return api.get("/user");
   },
+  forgot:(data) => {
+    return api.post("/forgot-password", data);
+  }
 };
 
 export default User;

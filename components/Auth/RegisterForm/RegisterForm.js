@@ -30,7 +30,7 @@ export default function RegisterForm(props) {
     const [errors, setErrors] = useState("");
     const [userInfo, setUserInfo] = useState(null);
     
-    const {register} = useAuth();
+   // const {register} = useAuth();
 
     // useEffect(() => {
         
@@ -58,7 +58,7 @@ export default function RegisterForm(props) {
                 ...formData
             
             };
-            const response = await register(userData );
+            const response = await User.register(userData );
             
             console.log('response', response);
             
