@@ -7,10 +7,10 @@ export default function Top() {
         <div className='top'>
             <Layout>
                 <Row className='top' justify='center'>
-                <Col span={8} className='top__left'>
+                <Col lg={{span:8}} md={{span:8}}  className='top__left'>
                 <Network />
                 </Col>
-                <Col span={8} className='top__right'>
+                <Col  lg={{span:8, offset:2}} md={{span:10  }} sm={{span:21}} xs={{span:20}} className='top__right'>
                 <Policies />
                 </Col>
 
@@ -44,18 +44,18 @@ function Policies(){
     return(
         <Layout>
             <Row>
-                <Col span={12}>   
+                <Col lg={{span:10}} md={{span:10 }} sm={{span:11, offset:4}} xs={{span:11, offset:4}} >   
                 <h3>Términos y condiciones</h3>
                 </Col>
-                <Col  span={12}>
+                <Col  lg={{span:10}} md={{span:10, offset:0}} sm={{span:10, offset:4}} xs={{span:11, offset:4}}>
                 <h3> Acerca de Nosotros</h3>
                 </Col>
             </Row>
             <Row>
-                <Col  span={12}>   
-                <h3>Acerca de Nosotros</h3>
+                <Col lg={{span:10}} md={{span:12 }} sm={{span:10, offset:2}} xs={{span:11, offset:4}}>   
+                <h3>Contactanos</h3>
                 </Col>
-                <Col  span={12}>
+                <Col lg={{span:10}} md={{span:10, offset:0}} sm={{span:10, offset:3}} xs={{span:11, offset:4}}>
                 <h3>Politicas de uso</h3>
                 </Col>
             </Row>

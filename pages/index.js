@@ -1,11 +1,21 @@
 import BasicLayout from "../layouts/BasicLayout";
+import React, {useState} from 'react'
 import { Row, Col, Divider } from 'antd';
 import { Carousel } from 'antd';
 import { Image } from 'antd';
 import { Button } from 'antd';
+import BasicModal from '../../tienda/components/Modal/BasicModal';
+import Auth from '../components/Auth';
 
 
 export default function Home() {
+
+  const [showModal, setShowModal] = useState(false);
+    const onShowModal = () => setShowModal(true);
+
+    const onCloseModal = () => setShowModal(false);
+
+    const [titleModal, setTitleModal] = useState("Iniciar sesión");
 
   const style = { background: '#0092ff', padding: '8px 0' };
   const contentStyle = {
@@ -200,21 +210,23 @@ export default function Home() {
 
     <Row gutter={[2,32]} style={{justifyContent:'center'}}>
 
-      <Col>
+      <Col span={13} className="registrate">
 
-      <div className="registrate">
         <Row className="centered">
-          <Col span={12}>
+          <Col lg={{span:12}} md={{span:24}} sm={{span:24}} >
           <h2 >¿Aun no estas registrado? </h2>
           </Col>
-          <Col className="centerbutton" span={12}>
+          <Col lg={{span:10, offset:2}} md={{span:24}} sm={{span:24}}>
 
-          <Button type="primary" size="large"><b>Registrate ahora</b></Button>
+          <Button type="primary" size="large" onClick={onShowModal}><b>Registrate ahora</b></Button>
           </  Col>
+
+          <BasicModal show={showModal} setShow={setShowModal} title={titleModal} width={500}>
+                <Auth onCloseModal={onCloseModal} setTitleModal={setTitleModal}/>
+          </BasicModal>
 
         </Row>
 
-      </div>
       </Col>
 
     </Row>

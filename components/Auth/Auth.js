@@ -7,7 +7,8 @@ export default function Auth(props) {
     const {onCloseModal, setTitleModal} = props;
 
     const [showLogin, setShowLogin] = useState(true);
-
+    const [forgot, setForgot] = useState(false);
+    
     const  showLoginForm  = () => {
         setTitleModal("Iniciar Sesión");
         setShowLogin(true)
@@ -17,6 +18,11 @@ export default function Auth(props) {
         setTitleModal("Crear nuevo usuario");
         setShowLogin(false)
     };
+
+    const showForgotForm = () => {
+        setTitleModal("Ingrese correo electronico");
+
+    }
 
     return showLogin ? <LoginForm showRegisterForm={showRegisterForm}/> : 
     <RegisterForm showLoginForm={showLoginForm}/>;

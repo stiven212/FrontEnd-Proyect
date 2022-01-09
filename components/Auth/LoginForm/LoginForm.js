@@ -1,33 +1,38 @@
 import React, {useState} from 'react'
 import {Form, Button, Input} from "antd";
-import { useAuth } from "../../../contexts/auth";
+//import { useAuth } from "../../../contexts/auth";
+import useAuth from '../../../hooks/useAuth';
+import User from '../../../api/user';
 
 
 
 export default function LoginForm(props) {
     const {showRegisterForm} = props;
     const [loading, setLoading] = useState(false);
-    const [result, setResult] = useState("");
-    const [userInfo, setUserInfo] = useState(null);
+   // const auth = useAuth();
+   const [result, setResult] = useState("");
+   const [userInfo, setUserInfo] = useState(null);
+   
+   const [email, setEmail] = useState("");
+   
+   const {login} = useAuth();
 
-
-
-    const {login} = useAuth();
 
     const onFinish = async (formData) => {
         setLoading(true);
         setUserInfo(null);
         setResult("Ingresando");
 
-
+        setEmail(formData.email);
         try{
             console.log(formData)
             const userData = {
                 ...formData
             };
 
-            const response = await login(userData);
+            const response = await User.login(userData);
             console.log('response', response);
+            login(response.data.token);
 
             setUserInfo(response.data);
         }catch(e){
@@ -37,6 +42,13 @@ export default function LoginForm(props) {
 
     }
 
+
+    const resetPassword = () => {
+
+        console.log(email);
+        
+
+    }
     return (
         <Form labelCol={{span:8}} className='login-form' onFinish={onFinish}>
             <Form.Item
@@ -73,7 +85,7 @@ export default function LoginForm(props) {
                     <Button htmlType='submit' className='submit' >
                         Ingresar
                     </Button>
-                    <Button type="link">¿Has olvidado la contraseña?</Button>
+                    <Button type="link" onClick={resetPassword}>¿Has olvidado la contraseña?</Button>
                     </div>
                 </div>
                 </Form.Item>
