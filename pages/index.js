@@ -19,7 +19,7 @@ export default function Home() {
 
   const style = { background: '#0092ff', padding: '8px 0' };
   const contentStyle = {
-    height: '350px',
+    height: '360px',
     color: '#fff',
     lineHeight: '220px',
     textAlign: 'center',
@@ -36,7 +36,7 @@ export default function Home() {
 
 
   return (
-    <BasicLayout>
+    <BasicLayout className="home">
       <h1>Estamos en la home</h1>
 
       <Divider orientation="left">Carrousel</Divider>

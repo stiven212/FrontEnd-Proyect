@@ -52,7 +52,7 @@ function Policies(){
                 </Col>
             </Row>
             <Row>
-                <Col lg={{span:10}} md={{span:12 }} sm={{span:10, offset:2}} xs={{span:11, offset:4}}>   
+                <Col lg={{span:10, offset:4}} md={{span:12 }} sm={{span:10, offset:2}} xs={{span:11, offset:4}}>   
                 <h3>Contactanos</h3>
                 </Col>
                 <Col lg={{span:10}} md={{span:10, offset:0}} sm={{span:10, offset:3}} xs={{span:11, offset:4}}>

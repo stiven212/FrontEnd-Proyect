@@ -1,16 +1,38 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Layout, Menu, Col, Row} from "antd";
 import Link from 'next/link';
-import {UserOutlined } from '@ant-design/icons';
+import {UserOutlined, ShoppingCartOutlined, HeartOutlined, ShoppingOutlined, LogoutOutlined } from '@ant-design/icons';
 import BasicModal from '../../Modal/BasicModal';
 import Auth from '../../Auth';
+import useAuth from '../../../hooks/useAuth';
+import User from "../../../api/user" ;
 
 export default function MenuWeb() {
 
     const [showModal, setShowModal] = useState(false);
     const onShowModal = () => setShowModal(true);
-
+    const {auth, logout} = useAuth();
     const onCloseModal = () => setShowModal(false);
+
+   // const {getAuthenticatedUser} = User();
+    const [user, setUser] = useState(undefined);
+
+    useEffect(() => {
+        
+        (async ()=> {
+            try{
+
+               const response = await User.me(logout);
+               // const response = await User.getAuthenticatedUser();
+               setUser(response); 
+               console.log(response); 
+            }catch(e){
+                console.log(e);
+            }
+
+        }) ()
+    }, [auth])
+
 
     const [titleModal, setTitleModal] = useState("Iniciar sesión");
     return (
@@ -22,7 +44,14 @@ export default function MenuWeb() {
                     <MenuPlatforms />
                     </Col>
                     <Col className='menu__right' span={11}>
-                    <MenuOptions onShowModal={onShowModal}/>
+                        {user !== undefined && 
+                        <MenuOptions 
+                        onShowModal={onShowModal} 
+                        user={user} 
+                        logout={logout}/>}
+                    
+                    
+
                     </Col>
                 </Row>
             </Layout>
@@ -68,15 +97,64 @@ function MenuPlatforms(){
 
 function MenuOptions(props){
 
-    const {onShowModal} = props;
+    const {onShowModal, user, logout} = props;
 
     return (
         <Menu>
-        <Menu.Item onClick={onShowModal}>
-        <UserOutlined />
+            {user ? (
+                <>
+                
+                <Link href="/account">
+                    <a>
 
-            Mi cuenta
-        </Menu.Item>
+                <Menu.Item>
+                <UserOutlined style={{fontSize:'20px'}}/>
+                {user.name}
+                </Menu.Item>
+                    </a>
+                </Link>
+                <Link href="/orders">
+                    <a>
+
+                <Menu.Item>
+                <ShoppingOutlined style={{fontSize:'20px'}}/>
+                Ordenes
+                </Menu.Item>
+                    </a>
+                </Link>
+                <Link href="/cart">
+                    <a>
+
+                <Menu.Item >
+                <ShoppingCartOutlined style={{fontSize:'30px',margin:'7px'}}/>
+                </Menu.Item>
+                    </a>
+                </Link>
+                <Link href="/wishlist">
+                    <a>
+
+                <Menu.Item >
+                <HeartOutlined style={{fontSize:'30px',margin:'7px'}}/>
+                </Menu.Item>
+                    </a>
+                </Link>
+                
+                 <Menu.Item onClick={logout}>
+                 
+                 <LogoutOutlined style={{fontSize:'25px',margin:'7px'}}/>
+                 </Menu.Item>
+                </>
+            ):
+            (
+                <Menu.Item onClick={onShowModal}>
+                <UserOutlined />
+
+                    Mi cuenta
+                </Menu.Item>
+
+            )
+            }
+        
         </Menu>
     )
 }

@@ -31,7 +31,8 @@ export default function Auth(props) {
 
     return showforgot ? (<ForgotForm showLoginForm={showLoginForm}/>) :(
 
-        showLogin ? <LoginForm showRegisterForm={showRegisterForm} showForgotForm={showForgotForm}/> : 
+        showLogin ? <LoginForm showRegisterForm={showRegisterForm} showForgotForm={showForgotForm}  onCloseModal={onCloseModal}
+        /> : 
         <RegisterForm showLoginForm={showLoginForm}/>
         )
 }

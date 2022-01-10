@@ -2,6 +2,7 @@
 
 // Layouts
 @import "../layouts/BasicLayout/BasicLayout.scss";
+@import "../pages/account.scss";
 
 // Components
 
@@ -13,3 +14,4 @@
 @import "../components/Footer/Footer.scss";
 @import "../components/Footer/Bottom/Bottom.scss";
 @import "../components/Footer/Top/Top.scss";
+@import "../components/Account/ChangeInfoForm/ChangeInfoForm.scss";

@@ -1,4 +1,5 @@
 import api from "./api";
+import { authFetch } from "../utils/fetch";
 
 const User = {
   register: (userData) => {
@@ -19,7 +20,23 @@ const User = {
   },
   forgot:(data) => {
     return api.post("/forgot-password", data);
+  },
+  me: async (logout) => {
+
+    try{
+
+      const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/user`;
+      const result =  await authFetch(url, null, logout);
+      return result ? result : null;
+    }catch(error){
+      console.log(error);
+    }
+    
+  },
+  update:(data)=>{
+    return api.put("/user", data);
   }
+ 
 };
 
 export default User;

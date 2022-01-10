@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Form, Button, Input} from "antd";
+import {Form, Button, Input, message} from "antd";
 import { useRouter } from "next/router";
 import { useAuth } from "../../../contexts/auth";
 import api from '../../../api/api';
@@ -73,6 +73,7 @@ export default function RegisterForm(props) {
            // console.log(response.data.email);
             setErrors("");
 
+            message.success("Registro exitoso", 4);
         }catch(e){
 
             console.log('error', e.response);

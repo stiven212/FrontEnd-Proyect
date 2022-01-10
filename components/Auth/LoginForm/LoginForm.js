@@ -7,7 +7,7 @@ import User from '../../../api/user';
 
 
 export default function LoginForm(props) {
-    const {showRegisterForm, showForgotForm} = props;
+    const {showRegisterForm, showForgotForm, onCloseModal} = props;
     const [loading, setLoading] = useState(false);
    // const auth = useAuth();
    const [result, setResult] = useState("");
@@ -33,9 +33,11 @@ export default function LoginForm(props) {
             login(response.data.token);
 
             setUserInfo(response.data);
+            onCloseModal();
+
         }catch(e){
-            console.log('error',e);
-            setResult("Ocurrio un error");
+            console.log('error');
+            setResult("Credenciales incorrectas");
         }
 
     }
