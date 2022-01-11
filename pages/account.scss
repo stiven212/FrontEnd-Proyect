@@ -1,6 +1,7 @@
 .account{
 
-    &__configuration{
+    &__configuration,
+    &__addresses{
         position: relative;
         padding: 10px;
 
@@ -17,5 +18,15 @@
             box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.1);
         }
 
+    }
+
+    &__addresses{
+        .title{
+            .ant-btn{
+                position: absolute;
+                right: 10px;
+                color: $font-dark;
+            }
+        }
     }
 }

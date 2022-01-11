@@ -5,7 +5,7 @@ import User from '../../../api/user';
 
 export default function ChangeInfoForm(props) {
 
-    const {user} = props;
+    const {user, logout, setReloadUser} = props;
 
     const [error, setError] = useState("");
 
@@ -21,6 +21,7 @@ export default function ChangeInfoForm(props) {
             console.log(response);
             setError("");
             message.success('Datos actualizados correctamente',5);
+            setReloadUser(true);
         } catch (error) {
             setError("Email ya en uso");
             console.log(error.status)

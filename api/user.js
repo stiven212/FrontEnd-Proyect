@@ -35,7 +35,8 @@ const User = {
   },
   update:(data)=>{
     return api.put("/user", data);
-  }
+  },
+  
  
 };
 
