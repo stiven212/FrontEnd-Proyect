@@ -6,8 +6,11 @@ import BasicModal from '../../Modal/BasicModal';
 import Auth from '../../Auth';
 import useAuth from '../../../hooks/useAuth';
 import User from "../../../api/user" ;
-
+import Category from '../../../api/category';
+import {map} from "lodash";
 export default function MenuWeb() {
+
+    const [categories, setCategories] = useState([]);
 
     const [showModal, setShowModal] = useState(false);
     const onShowModal = () => setShowModal(true);
@@ -33,6 +36,28 @@ export default function MenuWeb() {
         }) ()
     }, [auth])
 
+    useEffect(async () => {
+        
+        try {
+            const response = await Category.categories();
+
+         //   console.log('response', response.data);
+            //setCategories(response.data);
+
+            let a = [];
+            for(var i=0; i <= 4 ; i++){
+           //     console.log(response.data[i])
+                a.push(response.data[i])
+            }
+            
+          //  console.log(a)
+            setCategories(a);
+        } catch (error) {
+            console.log('error',error);
+        }
+        
+    }, [])
+
 
     const [titleModal, setTitleModal] = useState("Iniciar sesión");
     return (
@@ -41,7 +66,7 @@ export default function MenuWeb() {
             <Layout>
                 <Row>
                     <Col className='menu__left' span={6} offset={4}>
-                    <MenuPlatforms />
+                    <MenuPlatforms categories={categories}/>
                     </Col>
                     <Col className='menu__right' span={11}>
                         {user !== undefined && 
@@ -63,33 +88,25 @@ export default function MenuWeb() {
 }
 
 
-function MenuPlatforms(){
+function MenuPlatforms(props){
+
+    const {categories} = props;
     return (
         <Menu>
-            <Link href="/disenos"> 
-            <a>
-            
-                <Menu.Item >
-                    Diseños
-                </Menu.Item>     
-            </a> 
-            </Link>
-            <Link href="/camisetas"> 
-            <a>
-                <Menu.Item>
-                    Camisetas
-                </Menu.Item>     
-            </a> 
-            </Link>
-            <Link href="/equipos">  
-            <a>
+           {map(categories, (categorie)=>(
+               <Link href={`/categories/${categorie.id}`} key={categorie.id}>
+                   
+                   <a>
 
-                <Menu.Item>
-                    Equipos
-                </Menu.Item>     
-            </a>
-            </Link>
-            
+                   <Menu.Item>
+                        {categorie.name}
+                   </Menu.Item>
+
+                   </a>
+               </Link>
+           ))}
+
+           
         </Menu>
     )
 }

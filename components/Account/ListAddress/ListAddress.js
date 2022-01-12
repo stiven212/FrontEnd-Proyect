@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import Order from '../../../api/address';
 import {map, size} from "lodash";
-import { Row, Col, Button } from 'antd';
+import { Row, Col, Button, message } from 'antd';
 
 
-export default function ListAddress() {
+export default function ListAddress(props) {
+
+    const {reloadAddresses, setReloadAddresses, openModal} = props;
+
 
 
     const [addresses, setAddresses] = useState(null);
@@ -16,13 +19,17 @@ export default function ListAddress() {
             const address = response.data.data;
             console.log(address);
 
-            setAddresses(address)
+            setAddresses(address);
+            setReloadAddresses(false);
             
         } catch (error) {
             
-            console.log(response);
+            console.log(error);
         }
-    }, [])
+    }, [reloadAddresses])
+
+    if(!addresses) return null;
+
     return (
         <div className='list-address'>
             {size(addresses) === 0 ?
@@ -33,9 +40,11 @@ export default function ListAddress() {
             <Row>
                 {map(addresses, (address) => (
 
-                    <Col key={address.id} span={16}>
+                    <Col key={address.id} span={8}>
 
-                        <Address address={address}/>
+                        <Address address={address} setReloadAddresses={setReloadAddresses}
+                        openModal={openModal}
+                        />
                     </Col>
                 ))
                 }
@@ -49,11 +58,40 @@ export default function ListAddress() {
 }
 
 
-function Address(){
+function Address(props){
 
+    const {address,setReloadAddresses,openModal} = props;
+
+    const [loadingDelete, setLoadingDelete] = useState(false);
+
+    const deleteAddress = async() => {
+
+        
+        try{
+
+            setLoadingDelete(true);
+            
+            
+            const response = await Order.deleteAddress(address.id);
+            
+            
+            console.log('respone',response);
+            message.success("Dirección eliminada exitosamente", 3)
+            setReloadAddresses(true);
+            setLoadingDelete(false);
+        }catch(e){
+            console.log(e);
+        }
+    }
     return(
-        <div>
-            <p>Address</p>
+        <div className='address'>
+            <p>{address.address}</p>
+
+            <div className='actions'>
+                <Button type='primary' onClick={()=> openModal(`Editar: ${address.address}`, address)}>Editar</Button>
+                <Button type='primary' danger onClick={deleteAddress} loading={loadingDelete}>Eliminar</Button>
+
+            </div>
         </div>
     )
 }

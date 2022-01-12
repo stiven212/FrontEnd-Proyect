@@ -7,6 +7,12 @@ const Order = {
 
     addresses:()=>{
         return api.get("/order");
+    },
+    deleteAddress:(data)=>{
+        return api.delete(`/orders/${data}`, data);
+    },
+    updateAddress:(data, newData)=>{
+        return api.put(`/orders/${data}`,newData);
     }
 }
 
