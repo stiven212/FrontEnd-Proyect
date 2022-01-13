@@ -50,7 +50,13 @@ export default function MenuWeb() {
                 a.push(response.data[i])
             }
             
-          //  console.log(a)
+           console.log(a)
+
+        //    a.sort(function(a,b){
+            
+        //     return b.id-a.id;
+        //    })
+           console.log(a);
             setCategories(a);
         } catch (error) {
             console.log('error',error);

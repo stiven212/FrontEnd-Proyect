@@ -4,6 +4,12 @@
 @import "../layouts/BasicLayout/BasicLayout.scss";
 @import "../pages/account.scss";
 
+// Pages
+
+@import "../pages/admin/products.scss";
+@import "../pages/categories/id.scss";
+
+
 // Components
 
 @import "../components/Header/Header.scss";
@@ -17,3 +23,5 @@
 @import "../components/Account/ChangeInfoForm/ChangeInfoForm.scss";
 @import "../components/Account/AddressForm/AddressForm.scss";
 @import "../components/Account/ListAddress/ListAdress.scss";
+@import "../components/ListProducts/ListProducts.scss";
+@import "../components/Pagination/Pagination.scss";
