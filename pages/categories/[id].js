@@ -14,7 +14,7 @@ export default function categorie() {
 
     const [products, setProducts] = useState(null);
     const [totalProducts, setTotalProducts] = useState(null);
-    
+    const [page, setPage] = useState(1);
     const start = 5;
 
     const getStartItem = () => {
@@ -27,11 +27,12 @@ export default function categorie() {
     useEffect( async() => {
         
         try{
-            const response = await Product.getCategoryProducts(query.id);
+            const response = await Product.getCategoryProducts(query.id, query.page);
             console.log(response.data.data);
             console.log(response.data.data.length);
             setProducts(response.data.data);
             setTotalProducts(response.data.data.length);
+            setPage(query.id)
             
         }catch(e){
             console.log(e)
@@ -52,7 +53,7 @@ export default function categorie() {
                 <ListProducts products={products} />
             )}
 
-            {totalProducts ? <Pagination totalProducts={totalProducts} page={query.page ? parseInt(query.page) : 1} start={start}/> : null}
+            {totalProducts ? <Pagination totalProducts={totalProducts} page={query.page ? parseInt(query.page) : 1} start={start} /> : null}
         </BasicLayout>
     )
 }

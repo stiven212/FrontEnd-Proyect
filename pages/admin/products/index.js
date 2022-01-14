@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import BasicLayout from '../../layouts/BasicLayout';
-import Product from "../../api/product";
+import BasicLayout from "../../../layouts/BasicLayout"
+import Product from "../../../api/product";
 import { size } from 'lodash';
 import { Spin} from 'antd';
 
-import ListProducts from '../../components/ListProducts/ListProducts';
+import ListProducts from '../../../components/ListProducts/ListProducts';
 
 
 

@@ -130,8 +130,7 @@ function MenuOptions(props){
                 <Link href="/account">
                     <a>
 
-                <Menu.Item>
-                <UserOutlined style={{fontSize:'20px'}}/>
+                <Menu.Item icon={<UserOutlined style={{fontSize:'20px'}}/>}>
                 {user.name}
                 </Menu.Item>
                     </a>
@@ -139,8 +138,8 @@ function MenuOptions(props){
                 <Link href="/orders">
                     <a>
 
-                <Menu.Item>
-                <ShoppingOutlined style={{fontSize:'20px'}}/>
+                <Menu.Item icon={<ShoppingOutlined style={{fontSize:'20px'}}/>}>
+                
                 Ordenes
                 </Menu.Item>
                     </a>
@@ -169,8 +168,7 @@ function MenuOptions(props){
                 </>
             ):
             (
-                <Menu.Item onClick={onShowModal}>
-                <UserOutlined />
+                <Menu.Item onClick={onShowModal} icon={<UserOutlined />}>
 
                     Mi cuenta
                 </Menu.Item>

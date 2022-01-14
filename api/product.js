@@ -7,8 +7,12 @@ const Product = {
         
     },
 
-    getCategoryProducts:(data)=>{
-        return api.get(`/categories/${data}/products`)
+    getCategoryProducts:(data, page)=>{
+        return api.get(`/categories/${data}/products?page=${page}`)
+    },
+
+    getProduct: (data) => {
+        return api.get(`/products/${data}`);
     }
     
 

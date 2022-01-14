@@ -27,7 +27,7 @@ export default function ListProducts(props) {
 
 function Product(props) {
 
-    const {product} = props;
+    const {product } = props;
     return (
         <div className='list-products__product'>
          <Link href={`products/${product.id}`}>
