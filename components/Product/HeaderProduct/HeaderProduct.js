@@ -15,7 +15,7 @@ export default function HeaderProduct(props) {
     return (
         <Row className='header-product'>
             <Col xs={24} sm={12} lg={{span:8, offset:1}}>
-                <Image src="http://localhost:8000/storage/products/2VZWZxHZo7bxmIkwiToqQmmuchNBn8i7VlGmkMAH.png" alt={name} preview={false} />
+                <Image src="http://localhost:8000/storage/products/2VZWZxHZo7bxmIkwiToqQmmuchNBn8i7VlGmkMAH.png" alt={name} preview={true} />
                 {/* <Image src={image1} alt={name} /> */}
             </Col>
             <Col xs={24} sm={12} lg={{span:13, offset:1}}>

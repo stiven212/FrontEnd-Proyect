@@ -9,6 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import jwtDecode from "jwt-decode";
 import {setToken, getToken, removeToken} from "../../tienda/api/token";
 import {useRouter} from "next/router";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function MyApp({ Component, pageProps }) {
 
