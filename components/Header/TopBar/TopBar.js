@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Layout, Row, Col, Input, Image } from 'antd'
 import Link from 'next/link'
 import { AudioOutlined } from '@ant-design/icons';
+import { useRouter } from 'next/router';
 
 const {Search} = Input;
 
@@ -37,7 +38,29 @@ function Logo(){
 
 
 function Searchc(){
+
+    const [load, setLoad] = useState(false);
+    const [searchStr, setSearchStr] = useState("");
+
+    const router = useRouter();
+
+
+    useEffect(() => {
+        if(load){
+
+            
+            router.push(`search?query=${searchStr}`)
+        }
+        setLoad(true);
+    }, [searchStr])
+
+    // console.log(searchStr);
+
+    const data = (value)=>{
+        setSearchStr(value.target.value)
+        console.log(searchStr);
+    }
     return(
-        <Search placeholder="input search text" allowClear style={{ width: 220 }} />
+        <Search placeholder="input search text" value={router.query.query} allowClear style={{ width: 220 }} onChange={data} id='search-product'/>
     )
 }

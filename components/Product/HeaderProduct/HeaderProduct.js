@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import { Row, Col, Image, Button } from 'antd';
-import { size } from 'lodash';
-import { HeartFilled } from '@ant-design/icons';
+import { Row, Col, Image, Button , message} from 'antd';
+import { set, size } from 'lodash';
+import { HeartFilled, HeartOutlined } from '@ant-design/icons';
 import Link from 'next/link';
+import WishList from '../../../api/wishlist';
+import useAuth from '../../../hooks/useAuth';
+
+
 
 
 
@@ -11,7 +15,38 @@ export default function HeaderProduct(props) {
 
     const {image1, name} = product;
 
-    console.log(product);
+
+    const [isFavorite, setIsFavorite] = useState(false);
+    
+    const [wishId, setWishId] = useState(0);
+    useEffect(async() => {
+        
+
+        try{
+
+            const response = await WishList.wish();
+            console.log(response.data[0].id);
+
+            const wishId = response.data[0].id;
+
+            setWishId(wishId);
+
+            const response1 = await WishList.isAdded(wishId, product.id);
+
+            console.log(response1.data);
+            if(size(response1.data) >0) setIsFavorite(true);
+            else setIsFavorite(false);
+            
+        }catch(e){
+            console.log(e.response.status);
+            if(e.response.status === 404){
+                setIsFavorite(false)
+            }
+        }
+
+        
+    }, [product])
+
     return (
         <Row className='header-product'>
             <Col xs={24} sm={12} lg={{span:8, offset:1}}>
@@ -19,7 +54,7 @@ export default function HeaderProduct(props) {
                 {/* <Image src={image1} alt={name} /> */}
             </Col>
             <Col xs={24} sm={12} lg={{span:13, offset:1}}>
-                <Info product={product} />
+                <Info product={product} isFavorite={isFavorite} wishId={wishId}/>
             </Col>
         </Row>
     )
@@ -27,9 +62,39 @@ export default function HeaderProduct(props) {
 
 function Info(props) {
 
-    const {product} = props;
+    const {product, isFavorite, wishId} = props;
 
     const {name ,description, price, sale} = product;
+
+    const { auth, logout } = useAuth();
+
+
+    const addFavorite = async() => {
+        if(auth){
+            try{
+
+                const response = await WishList.addFavorite(wishId, product.id);
+                console.log(response);
+                message.success("Producto agregado a favoritos",3);
+            }catch(e){
+                console.log(e.response);
+            }
+        }
+        
+    }
+
+    const deleteFavorite = async() => {
+        if(auth){
+            try{
+
+                const response = await WishList.deleteFavorite(wishId, product.id);
+                console.log(response);
+                message.warning("Producto eliminado de favoritos",3);
+            }catch(e){
+                console.log(e.response);
+            }
+        }
+    }
     return (
         <>
         <div className='header-product__title'>
@@ -39,7 +104,14 @@ function Info(props) {
             <Link href="#">
             <a>
 
-            <HeartFilled style={{fontSize:'20px' ,color:'red'}}/>
+            <Button onClick={isFavorite ? deleteFavorite : addFavorite }>
+            {isFavorite ?
+
+            <HeartFilled style={{fontSize:'20px' ,color:'red'}}/>:
+            <HeartOutlined style={{fontSize:'20px' ,color:'blue'}}/>
+            }
+            </Button>
+            
             </a>
             </Link>
         </div>

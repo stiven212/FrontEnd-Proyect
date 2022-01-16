@@ -30,7 +30,7 @@ function Product(props) {
     const {product } = props;
     return (
         <div className='list-products__product'>
-         <Link href={`products/${product.id}`}>
+         <Link href={`categories/products/${product.id}`}>
 
              <a>
                 <div className='list-products__product-image'>

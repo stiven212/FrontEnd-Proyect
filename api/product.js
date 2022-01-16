@@ -13,6 +13,9 @@ const Product = {
 
     getProduct: (data) => {
         return api.get(`/products/${data}`);
+    },
+    searchProduct:(data) => {
+        return api.get(`/search/${data}`);
     }
     
 
