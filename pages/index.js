@@ -40,7 +40,7 @@ export default function Home() {
       <h1>Estamos en la home</h1>
 
       <Divider orientation="left">Carrousel</Divider>
-    <Row gutter={16} style={{justifyContent:'center'}}>
+    <Row gutter={10} style={{justifyContent:'center'}}>
       <Col className="gutter-row" span={22}>
       <Carousel autoplay>
     <div>
