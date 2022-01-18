@@ -8,6 +8,9 @@ import useAuth from '../../../hooks/useAuth';
 import User from "../../../api/user" ;
 import Category from '../../../api/category';
 import {map} from "lodash";
+import useCart from '../../../hooks/useCart';
+
+
 export default function MenuWeb() {
 
     const [categories, setCategories] = useState([]);
@@ -121,6 +124,7 @@ function MenuPlatforms(props){
 function MenuOptions(props){
 
     const {onShowModal, user, logout} = props;
+    const {productsCart} = useCart();
 
     return (
         <Menu>
@@ -149,6 +153,12 @@ function MenuOptions(props){
 
                 <Menu.Item >
                 <ShoppingCartOutlined style={{fontSize:'30px',margin:'7px'}}/>
+                {productsCart > 0 && ( 
+                    <label style={{position:'relative', borderRadius:'90%', padding:'3px', top:'-18px', fontWeight:'bold', left:'-5px'}}>
+                    {productsCart}
+                </label>
+                )}
+                
                 </Menu.Item>
                     </a>
                 </Link>

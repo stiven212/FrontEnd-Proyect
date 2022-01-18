@@ -5,6 +5,7 @@ import { HeartFilled, HeartOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import WishList from '../../../api/wishlist';
 import useAuth from '../../../hooks/useAuth';
+import useCart from '../../../hooks/useCart';
 
 
 
@@ -62,11 +63,14 @@ export default function HeaderProduct(props) {
 
 function Info(props) {
 
+
     const {product, isFavorite, wishId} = props;
 
-    const {name ,description, price, sale} = product;
+    const {name ,description, price, sale, id} = product;
 
     const { auth, logout } = useAuth();
+
+    const {addProductCart} = useCart();
 
 
     const addFavorite = async() => {
@@ -74,7 +78,6 @@ function Info(props) {
             try{
 
                 const response = await WishList.addFavorite(wishId, product.id);
-                console.log(response);
                 message.success("Producto agregado a favoritos",3);
             }catch(e){
                 console.log(e.response);
@@ -88,7 +91,6 @@ function Info(props) {
             try{
 
                 const response = await WishList.deleteFavorite(wishId, product.id);
-                console.log(response);
                 message.warning("Producto eliminado de favoritos",3);
             }catch(e){
                 console.log(e.response);
@@ -104,13 +106,12 @@ function Info(props) {
             <Link href="#">
             <a>
 
-            <Button onClick={isFavorite ? deleteFavorite : addFavorite }>
             {isFavorite ?
 
-            <HeartFilled style={{fontSize:'20px' ,color:'red'}}/>:
-            <HeartOutlined style={{fontSize:'20px' ,color:'blue'}}/>
+            <HeartFilled style={{fontSize:'20px' ,color:'red'}} onClick={isFavorite ? deleteFavorite : addFavorite}/>:
+            <HeartOutlined style={{fontSize:'20px' ,color:'blue'}} onClick={isFavorite ? deleteFavorite : addFavorite}/>
             }
-            </Button>
+            
             
             </a>
             </Link>
@@ -127,7 +128,7 @@ function Info(props) {
                 <p>${price}</p>
                 </div>
             </div>
-            <Button className='header-product__buy-btn'>
+            <Button className='header-product__buy-btn' onClick={() => addProductCart(id)}>
                 Comprar
             </Button>
         </div>

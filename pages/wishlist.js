@@ -15,6 +15,7 @@ export default function wishlist() {
     const {auth, logout} = useAuth();
     const [wishId, setWishId] = useState(0);
 
+    
     useEffect(async() => {
         
 

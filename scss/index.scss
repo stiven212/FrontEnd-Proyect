@@ -9,7 +9,7 @@
 @import "../pages/admin/products.scss";
 @import "../pages/categories/id.scss";
 @import "../pages/search.scss";
-
+@import "../pages/cart.scss";
 
 // Components
 
@@ -31,3 +31,5 @@
 @import "../components/Product/InfoProduct/InfoProduct.scss";
 @import "../components/Product/CarouselImages/CarouselImages.scss";
 @import "../pages/wishlist.scss";
+@import '../components/Cart/SummaryCart/SummaryCart.scss';
+@import "../components/Cart/AddressShipping/AddressShipping.scss";
