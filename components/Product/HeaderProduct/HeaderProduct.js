@@ -82,7 +82,11 @@ function Info(props) {
             }catch(e){
                 console.log(e.response);
             }
+        }else{
+            message.warning("Necesitas iniciar sesión para realizar esta acción ")
+
         }
+
         
     }
 

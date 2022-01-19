@@ -6,6 +6,7 @@ import AuthContext from "../contexts/AuthContext";
 import CartContext from "../contexts/CartContext";
 import { AuthProvider } from "../contexts/auth";
 import {ToastContainer} from "react-toastify";
+import Head from "next/head";
 import 'react-toastify/dist/ReactToastify.css';
 import jwtDecode from "jwt-decode";
 import {setToken, getToken, removeToken} from "../../tienda/api/token";
@@ -103,7 +104,59 @@ export default function MyApp({ Component, pageProps }) {
 
   if(auth === undefined) return null
 
-  return <AuthContext.Provider value={authData}>
+  return <>
+  <Head>
+    <title>Insignia</title>
+    <script src="https://pay.payphonetodoesposible.com/api/button/js?appId=EFqKQbp9SEeThmBIj649w"></script>
+    {/* <link rel="icon" href='/insignia.png' /> */}
+
+    {/* <script>
+      window.onload = function() {
+      payphone.Button({
+
+      //token obtenido desde la consola de developer
+      token: "0IbQvS-tKHNfXWJxJBQjmKCmPckh09L7gcBpplMTNkzqjjegTBltq6E4BsrM8rdP_3BPUFMADtLLkvCSHCfsKXvZs4IMRq_gFgJsdCYgGhjPCZURTrvl39ZyelMjUeVxHOY-Cf3aQNbO2Msop6wY1d7FuLl8i8A8zbhVNtUv40Tb9HfupEdZXuhqqgaR1e3R-YD6rudX3fhinQmT9CtcDh-kw9yPmYleqqoyaCDw8MFNr8jENOYGpNwsUloC3JktucUwvsODgAd4alfgMxWu75ATCtYx1pCYf74UCkfCMz1dWR3xB0PUogAhSdJu6vPPaE_GYQ",
+
+      //PARÁMETROS DE CONFIGURACIÓN
+      btnHorizontal: true,
+      btnCard: true,
+
+        createOrder: function(actions){
+
+        //Se ingresan los datos de la transaccion ej. monto, impuestos, etc
+        return actions.prepare({
+
+        amount: 100,
+        amountWithoutTax: 100,
+        currency: 'USD',
+        clientTransactionId: 'DN6Sw6q5HEKryHbfo5mCw'
+        });
+
+        },
+        onComplete: function(model, actions){
+
+        //Se confirma el pago realizado
+        actions.confirm({
+        id: model.id,
+        clientTxId: model.clientTxId
+        }).then(function(value){
+
+        //EN ESTA SECCIÓN SE RECIBE LA RESPUESTA Y SE MUESTRA AL USUARIO                                
+
+        if (value.transactionStatus == Approved){
+        alert('Pago'  + value.transactionId + ' recibido', estado  + value.transactionStatus );
+        }
+        }).catch(function(err){
+        console.log(err);
+        });
+
+        }
+        }).render('App-button')
+
+        }
+</script> */}
+  </Head>
+  <AuthContext.Provider value={authData}>
     <CartContext.Provider value={cartData}>
 
    <Component {...pageProps} />
@@ -120,6 +173,7 @@ export default function MyApp({ Component, pageProps }) {
     />
     </CartContext.Provider>
     </AuthContext.Provider>
+    </>
 }
 
 MyApp.propTypes = {
