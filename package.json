@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "ajax": "^0.0.4",
     "antd": "^4.17.3",
     "axios": "^0.24.0",
     "classnames": "^2.3.1",
+    "jquery": "^3.6.0",
     "js-cookie": "^3.0.1",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",

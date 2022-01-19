@@ -1,15 +1,16 @@
-import {ajax} from "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js";
+import $ from "jquery";
+
 
 export default function producto1 () {
          var parametros = {
-             amount: "512",
+             amount: 5120.00,
             //  amountWithoutTax: "500000",
-            amountWithTax:"500",
-            Tax: '12',
+            amountWithTax:5000.00,
+            Tax: 120.00,
             email: 'stiven.lopez@gmail.com',
-             clientTransactionId: "Pruebasx00",
-            responseUrl: "http://127.0.0.1:5500/aprobado.html",
-            cancellationUrl: "http://127.0.0.1:5500/cancel.html"
+             clientTransactionId: "Pruebasx0075",
+            responseUrl: "http://127.0.0.1:3000/transaction",
+            cancellationUrl: "http://127.0.0.1:3000/transaction"
          };
 
          $.ajax({
@@ -25,7 +26,7 @@ export default function producto1 () {
              }, error: function(respuesta){
                  alert("Error en la llamada "+ respuesta.responseJSON.message);
                  console.log(respuesta)
-                 document.getElementById('status').innerHTML = respuesta.responseJSON.message;
+                // document.getElementById('status').innerHTML = respuesta.responseJSON.message;
 
              }
          });
