@@ -1,14 +1,14 @@
 import $ from "jquery";
 
 
-export default function producto1 () {
+export default function PayPhone () {
          var parametros = {
              amount: 5120.00,
             //  amountWithoutTax: "500000",
             amountWithTax:5000.00,
             Tax: 120.00,
             email: 'stiven.lopez@gmail.com',
-             clientTransactionId: "Pruebasx0075",
+             clientTransactionId: "Pruebasx0077",
             responseUrl: "http://127.0.0.1:3000/transaction",
             cancellationUrl: "http://127.0.0.1:3000/transaction"
          };

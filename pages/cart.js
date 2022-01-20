@@ -4,6 +4,7 @@ import Product from '../api/product';
 import useCart from '../hooks/useCart';
 import SummaryCart from '../components/Cart/SummaryCart';
 import AddressShipping from '../components/Cart/AddressShipping';
+import Payment from '../components/Cart/Payment';
 
 
 
@@ -54,6 +55,8 @@ function FullCart(props){
         <BasicLayout className="empty-cart">
             <SummaryCart products={productsData} setReloadCart={setReloadCart} reloadCart={reloadCart}/>
             <AddressShipping setAddress={setAddress}/>
+        
+            {address && <Payment products={productsData} address={address}/>}
         </BasicLayout>
     )
 }
