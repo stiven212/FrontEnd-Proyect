@@ -1,9 +1,19 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
-export default function Paypal() {
+export default function Paypal(props) {
+  const {totalPrice, setcheckout} = props;
   const paypal = useRef();
 
+  const [valueToPay, setvalueToPay] = useState(0);
+
+  console.log('valueToPay', valueToPay);
+  // console.log('valueToPay', valueToPay);
+
+  // XD
+  // XD
+
   useEffect(() => {
+    setvalueToPay(totalPrice);
     window.paypal
       .Buttons({
         createOrder: (data, actions, err) => {
@@ -14,7 +24,7 @@ export default function Paypal() {
                 description: "Cool looking table x7",
                 amount: {
                   currency_code: "USD",
-                  value: 650.2,
+                  value: valueToPay,
                 },
               },
             ],
@@ -23,16 +33,19 @@ export default function Paypal() {
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
           console.log(order);
+          setcheckout(false);
         },
         onCancel: async (data) => {
-            console.log(data);
+          console.log(data);
+          setcheckout(false);
         },
         onError: (err) => {
           console.log(err);
+          setcheckout(false);
         },
       })
       .render(paypal.current);
-  }, []);
+  }, [totalPrice, valueToPay]);
 
   return (
     <div>
