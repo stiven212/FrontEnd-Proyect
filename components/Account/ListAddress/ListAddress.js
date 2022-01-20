@@ -24,7 +24,7 @@ export default function ListAddress(props) {
             
         } catch (error) {
             
-            console.log(error);
+            console.log(error.response);
         }
     }, [reloadAddresses])
 

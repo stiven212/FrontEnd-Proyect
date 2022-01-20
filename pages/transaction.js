@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import Head from 'next/head'
 import React, { useState } from 'react'
-import producto1 from '../api/transaction';
+import PayPhone from '../api/transaction';
 import BasicLayout from '../layouts/BasicLayout'
 import Router, { useRouter } from 'next/router';
 import { route } from 'next/dist/server/router';
@@ -17,7 +17,7 @@ export default function transaction() {
     const value = router.query.id;
     const value2 = router.query.clientTransactionId;
 
-
+    const data = "hola312";
     const [checkout, setcheckout] = useState(false);
     return (
         <>
@@ -30,7 +30,7 @@ export default function transaction() {
 
            
             <h2>Transaction exitosa xd</h2>
-            <Button onClick={() => producto1()}>
+            <Button onClick={() => PayPhone(data)}>
                 Pagar 5.12$
             </Button>
 
