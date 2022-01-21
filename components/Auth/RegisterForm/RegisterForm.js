@@ -77,11 +77,11 @@ export default function RegisterForm(props) {
         }catch(e){
 
             console.log('error', e.response);
-            console.log('e ',e.data.errors.email);
+            console.log('e ',e.response.data.errors.email);
 
-            toast.error(e.data.errors.email)
+            toast.error(e.response.data.errors.email)
 
-            setErrors(e.data.errors.email);
+            setErrors(e.response.data.errors.email);
 
             const {response} = e;
 

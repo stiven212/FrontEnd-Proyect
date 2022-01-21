@@ -6,25 +6,84 @@ import { ShoppingCartOutlined } from '@ant-design/icons';
 import { forEach } from 'lodash';
 import PayPal from '../../PayPal';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-
-
+import { useRouter } from 'next/router';
+import Detail from '../../../api/order';
+import { size } from 'lodash';
+import Confirmation from '../../../api/transaction';
 
 export default function Payment(props) {
 
     const {products, address} = props;
 
+
     const [dataName, setdataName] = useState("");
     const [totalPrice, setTotalPrice] = useState(0);
-    const [checkout, setcheckout] = useState(false);
+    // const [checkout, setcheckout] = useState(false);
+    const [payment, setpayment] = useState(null);
 
+    const router = useRouter();
+    console.log(products);
+    
+    console.log(address.address);
     console.log(dataName);
+
+    console.log(totalPrice);
+    useEffect(async() => {
+      try{
+
+        
+        //   const confirm = () => {
+        //       Confirmation(router)
+        //   }
+
+        if(router.query.id && totalPrice > 0){
+            // confirm();
+            // console.log(router.query.clientTransactionId)
+            if(router.query.id === 0){
+                console.log('Transaccion cancelada')
+            }else{
+                const data = {
+                    'quantity' : size(products),
+                    'details' : router.query.clientTransactionId,
+                    'iva' : (totalPrice * 0.12).toFixed(2),
+                    'subtotal' : (totalPrice - (totalPrice * 0.12)).toFixed(2),
+                    'total': (totalPrice).toFixed(2),
+
+                };
+                const response = await Detail.newOrder(address.id,data);
+                console.log(response);
+                console.log(response.status);
+
+                const orderId= response.data.id;
+                if(response.status === 201){
+
+                    for await (const product of products){
+                        console.log(product.id);
+
+                        const response1 = await Detail.addProducts(orderId, product.id)
+
+                         console.log(response1);
+                    }
+                }
+            }
+        }else{
+            console.log('A la espera de transacciones');
+        }
+
+      }catch(e){
+            console.log(e.response);
+      }
+    
+    }, [router.query.id, totalPrice]);
+    
+
     useEffect(() => {
         const d = new Date();
         const data = d.getTime().toString();
-        setdataName(data);
+        setdataName(data ) ;
 
 
-    }, []);
+    }, [address]);
 
     
 
@@ -37,7 +96,6 @@ export default function Payment(props) {
             price += product.price;
         })
         setTotalPrice(price);
-        setcheckout(false);
     }, [products])
 
 
@@ -90,7 +148,7 @@ export default function Payment(props) {
                 });
             }}
         />
-    </PayPalScriptProvider> 
+    </PayPalScriptProvider>  
                 </div>
             </div>
         </div>

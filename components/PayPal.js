@@ -12,6 +12,7 @@ export default function Paypal(props) {
   // XD
   // XD
 
+
   useEffect(() => {
     setvalueToPay(totalPrice);
     window.paypal
