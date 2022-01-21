@@ -60,3 +60,7 @@ export function removeProductCart(producto){
     }
 }
 
+export function removeAllProductsCart(){
+    localStorage.removeItem("cart")
+}
+

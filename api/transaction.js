@@ -6,9 +6,9 @@ export default function PayPhone (data, value) {
     const cost = value * 100;
          var parametros = {
             amount: cost,
-            amountWithoutTax: cost,
-            // amountWithTax:5000.00,
-            // Tax: 120.00,
+            //amountWithoutTax: cost,
+             amountWithTax:(cost - (cost * 0.12)),
+             Tax: (cost * 0.12),
             email: 'stiven.lopez@gmail.com',
              clientTransactionId: data,
             //  clientTransactionId: "Pruebasx0077",

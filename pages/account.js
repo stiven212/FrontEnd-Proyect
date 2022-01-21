@@ -20,6 +20,7 @@ export default function account() {
     const [user, setUser] = useState(undefined);
     const {auth, logout, setReloadUser} = useAuth();
 
+    console.log(user)
     useEffect( async () => {
         
         try{

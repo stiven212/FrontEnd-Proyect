@@ -3,6 +3,7 @@ import {Form, Button, Input} from "antd";
 //import { useAuth } from "../../../contexts/auth";
 import useAuth from '../../../hooks/useAuth';
 import User from '../../../api/user';
+import { useRouter } from 'next/router';
 
 
 
@@ -12,6 +13,8 @@ export default function LoginForm(props) {
    // const auth = useAuth();
    const [result, setResult] = useState("");
    const [userInfo, setUserInfo] = useState(null);
+
+   const router = useRouter();
    
    
    const {login} = useAuth();
@@ -33,6 +36,9 @@ export default function LoginForm(props) {
             login(response.data.token);
 
             setUserInfo(response.data);
+            if(response.data.role !== "ROLE_USER"){
+                router.push('/admin/products')
+            }
             onCloseModal();
 
         }catch(e){

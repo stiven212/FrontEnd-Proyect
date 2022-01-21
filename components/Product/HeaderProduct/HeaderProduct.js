@@ -39,6 +39,7 @@ export default function HeaderProduct(props) {
             else setIsFavorite(false);
             
         }catch(e){
+            console.log(e.response)
             console.log(e.response.status);
             if(e.response.status === 404){
                 setIsFavorite(false)

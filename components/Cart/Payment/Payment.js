@@ -10,61 +10,103 @@ import { useRouter } from 'next/router';
 import Detail from '../../../api/order';
 import { size } from 'lodash';
 import Confirmation from '../../../api/transaction';
+import $ from "jquery";
+import useCart from '../../../hooks/useCart';
 
 export default function Payment(props) {
 
     const {products, address} = props;
 
+    
 
     const [dataName, setdataName] = useState("");
     const [totalPrice, setTotalPrice] = useState(0);
     // const [checkout, setcheckout] = useState(false);
     const [payment, setpayment] = useState(null);
 
+    const {removeAllProductsCart} = useCart();
     const router = useRouter();
+
     console.log(products);
     
     console.log(address.address);
     console.log(dataName);
 
     console.log(totalPrice);
+
+    console.log(payment)
+
     useEffect(async() => {
-      try{
 
         
-        //   const confirm = () => {
-        //       Confirmation(router)
-        //   }
+      try{
 
+        var parametros = {id:router.query.id, clientxId: router.query.clientTransactionId};
+
+        if(parametros.id > 0 && totalPrice > 0){
+
+                
+            $.ajax({
+                data: parametros,
+                url: 'https://pay.payphonetodoesposible.com/api/button/Confirm',
+                type: 'POST',
+                beforeSend: function(xhr){
+                    xhr.setRequestHeader ("Authorization", 'Bearer PsOS72uS_xCQdtX5eRPZR_dSq527d3pUUfqnRVEZdM6SYQa_aXNXjfpBvw5sMM22E8QPgy3qqF2Q15n2ldKgYB5zE88QcddpFbPkWzhCW2-_N6LClXxQm91U7wNLuhNBWb4--O-denfvSe-zyeHCkG00Ps9lN983tyAbF52EZnujkUp2Mpz4QNZpFKeHGz6BH0Nk3sp5uXUDs5gYWFXFfUzBViIowmSUEqx3Q3vyPxXNcdcoX1t3Jtssk38oeQKuzMjpQeYijqskQRheQAPw_K2Nh648Kk3Rt1xUDdeKURM52t3iTH-IVxXWcqNAbr5ukPaveQ')
+                }, success: function Confirmation(respuesta){
+                    var estado = respuesta.transactionStatus;
+                    console.log(estado)
+                    setpayment(estado);
+                    alert('pago procesado')
+                    
+                    
+                }, error: function(respuesta){
+                    alert('Error en la llamada '+ respuesta.responseText);
+                    console.log(respuesta)
+                    setpayment(null)
+                }
+            })
+        }
+ 
         if(router.query.id && totalPrice > 0){
-            // confirm();
-            // console.log(router.query.clientTransactionId)
-            if(router.query.id === 0){
+          
+            console.log(router.query.id)
+            console.log(parseInt(router.query.id))
+            console.log(payment)
+            if(router.query.id === '0'){
+            
                 console.log('Transaccion cancelada')
+
+                alert('transaccion cancelada')
             }else{
+               
                 const data = {
                     'quantity' : size(products),
                     'details' : router.query.clientTransactionId,
                     'iva' : (totalPrice * 0.12).toFixed(2),
                     'subtotal' : (totalPrice - (totalPrice * 0.12)).toFixed(2),
                     'total': (totalPrice).toFixed(2),
-
+                    
                 };
                 const response = await Detail.newOrder(address.id,data);
                 console.log(response);
                 console.log(response.status);
-
+                
                 const orderId= response.data.id;
                 if(response.status === 201){
-
+                    
                     for await (const product of products){
                         console.log(product.id);
-
+                        
                         const response1 = await Detail.addProducts(orderId, product.id)
-
-                         console.log(response1);
+                        
+                        console.log(response1);
                     }
                 }
+                removeAllProductsCart();
+                router.push('/orders')
+
+                console.log('orden creada')
+                
             }
         }else{
             console.log('A la espera de transacciones');
@@ -128,27 +170,28 @@ export default function Payment(props) {
                             </Button>
                         )} */}
 
-<PayPalScriptProvider options={{ "client-id": "test" }}>
-        <PayPalButtons
-            createOrder={(data, actions) => {
-                return actions.order.create({
-                    purchase_units: [
-                        {
-                            amount: {
-                                value: totalPrice,
-                            }
-                        }
-                    ]
-                });
-            }}
-            onApprove={(data, actions) => {
-                return actions.order.capture().then((details) => {
-                    const name = details.payer.name.given_name;
-                    alert(`Transaction completed by ${name}`);
-                });
-            }}
-        />
-    </PayPalScriptProvider>  
+                    {/* <PayPalScriptProvider options={{ "client-id": "test" }}>
+                            <PayPalButtons
+                                createOrder={(data, actions) => {
+                                    return actions.order.create({
+                                        purchase_units: [
+                                            {
+                                                amount: {
+                                                    value: totalPrice,
+                                                }
+                                            }
+                                        ]
+                                    });
+                                }}
+                                onApprove={(data, actions) => {
+                                    return actions.order.capture().then((details) => {
+                                        const name = details.payer.name.given_name;
+                                        alert(`Transaction completed by ${name}`);
+                                        console.log(details.status)
+                                    });
+                                }}
+                            />
+                        </PayPalScriptProvider>   */}
                 </div>
             </div>
         </div>
