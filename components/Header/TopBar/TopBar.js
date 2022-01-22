@@ -8,18 +8,14 @@ const {Search} = Input;
 
 export default function TopBar() {
     return (
-        <div className='top-bar'>
-            <Layout>
                 <Row className='top-bar' justify='center'>
-                    <Col span={8} className='top-bar__left'>
+                    <Col lg={{span:8}} md={{span:8}}   className='top-bar__left'>
                     <Logo/>
                     </Col>
-                    <Col span={8} className='top-bar__right'>
+                    <Col  lg={{span:8}} md={{span:8}} sm={{span:20, offset:2}} xs={{span:20, offset:2}} className='top-bar__right'>
                     <Searchc/>
                     </Col>
                 </Row>
-            </Layout>
-        </div>
     )
 }
 

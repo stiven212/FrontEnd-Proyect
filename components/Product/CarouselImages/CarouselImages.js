@@ -21,16 +21,7 @@ const settings = {
 export default function CarouselImages(props) {
     const {product} = props;
 
-    const [showModal, setShowModal] = useState(true);
-    const [urlImage, setUrlImage] = useState(null);
-
-    const openImage = (url) => {
-        setUrlImage(url)
-
-        setShowModal(true);
-
-    }
-
+    
     console.log(product);
 
   

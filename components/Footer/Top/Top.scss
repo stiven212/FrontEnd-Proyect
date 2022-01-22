@@ -40,6 +40,10 @@
                     }
                     h3:hover{
                         color: rgb(161, 143, 143);
+                        &:hover{
+                            cursor: pointer;
+                
+                        }
                     }
                 }
             }

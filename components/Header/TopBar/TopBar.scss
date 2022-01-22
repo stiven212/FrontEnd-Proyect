@@ -1,7 +1,8 @@
 .top-bar{
-    height: 90px;
     background-color: $background-dark;
-
+    padding-bottom: 2em;
+    height: 100%;
+    padding-top: 1em;
     .ant-row{
         margin: 0;
         padding: 0;
@@ -30,7 +31,7 @@
 
         .ant-input-search{
             align-items: center;
-
+            width: 100% !important;
             .ant-input-group {
 
                 .ant-input-affix-wrapper {

@@ -73,11 +73,11 @@ export default function MenuWeb() {
         <div className="menu">
 
             <Layout>
-                <Row>
-                    <Col className='menu__left' span={6} offset={4}>
+                <Row justify='center'> 
+                    <Col className='menu__left' lg={{span:11}} md={{span:11}}>
                     <MenuPlatforms categories={categories}/>
                     </Col>
-                    <Col className='menu__right' span={11}>
+                    <Col className='menu__right' lg={{span:6}} md={{span:11}}>
                         {user !== undefined && 
                         <MenuOptions 
                         onShowModal={onShowModal} 

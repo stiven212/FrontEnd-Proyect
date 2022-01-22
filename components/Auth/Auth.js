@@ -5,10 +5,13 @@ import ForgotForm from './ForgotForm/ForgotForm';
 
 export default function Auth(props) {
 
-    const {onCloseModal, setTitleModal} = props;
+    const {onCloseModal, setTitleModal, showRegister} = props;
 
-    const [showLogin, setShowLogin] = useState(true);
+    const [showLogin, setShowLogin] = useState(showRegister ? false : true);
     const [showforgot, setShowForgot] = useState(false);
+
+
+    
     
     const  showLoginForm  = () => {
         setTitleModal("Iniciar Sesión");
@@ -28,6 +31,8 @@ export default function Auth(props) {
         setShowForgot(true);
 
     }
+
+
 
     return showforgot ? (<ForgotForm showLoginForm={showLoginForm}/>) :(
 
