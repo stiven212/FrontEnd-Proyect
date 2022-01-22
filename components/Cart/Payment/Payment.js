@@ -12,6 +12,7 @@ import { size } from 'lodash';
 import Confirmation from '../../../api/transaction';
 import $ from "jquery";
 import useCart from '../../../hooks/useCart';
+import { message } from 'antd';
 
 export default function Payment(props) {
 
@@ -56,8 +57,8 @@ export default function Payment(props) {
                     var estado = respuesta.transactionStatus;
                     console.log(estado)
                     setpayment(estado);
-                    alert('pago procesado')
-                    
+
+                    message.loading('Generando orden de compra', 1.2)
                     
                 }, error: function(respuesta){
                     alert('Error en la llamada '+ respuesta.responseText);
@@ -76,7 +77,7 @@ export default function Payment(props) {
             
                 console.log('Transaccion cancelada')
 
-                alert('transaccion cancelada')
+                // alert('transaccion cancelada')
             }else{
                
                 const data = {
@@ -102,7 +103,11 @@ export default function Payment(props) {
                         console.log(response1);
                     }
                 }
+
+                message.success('Orden creada correctamente');
                 removeAllProductsCart();
+
+
                 router.push('/orders')
 
                 console.log('orden creada')

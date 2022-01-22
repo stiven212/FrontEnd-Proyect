@@ -23,7 +23,7 @@ export default function wishlist() {
 
             const response = await WishList.wish();
             
-            const wishId = response.data[0].id;
+            const wishId = response.data.data[0].id;
             setWishId(wishId);
            // console.log(wishId);
 

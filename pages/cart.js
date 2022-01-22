@@ -5,6 +5,8 @@ import useCart from '../hooks/useCart';
 import SummaryCart from '../components/Cart/SummaryCart';
 import AddressShipping from '../components/Cart/AddressShipping';
 import Payment from '../components/Cart/Payment';
+import { useRouter } from 'next/router';
+import { message } from 'antd';
 
 import Head from 'next/head';
 
@@ -36,6 +38,23 @@ function FullCart(props){
     const [reloadCart, setReloadCart] = useState(false);
     
     const [address, setAddress] = useState(null);
+    const router = useRouter();
+
+
+    useEffect(() => {
+      
+        if(router.query.id ){
+            if(router.query.id !== '0'){
+                //alert('Seleccione direccion de envio para continuar con la compra')
+                message.info('Para confirmar la compra selecciona una dirección de envio',5);
+            }else{
+               // alert('No se realizo la compra')
+                message.warn('Pago no realizado')
+            }
+        }
+    }, [router.query]);
+    
+   
 
     console.log(address)
     useEffect(async() => {

@@ -26,9 +26,10 @@ export default function HeaderProduct(props) {
         try{
 
             const response = await WishList.wish();
-            console.log(response.data[0].id);
+            console.log(response.data)
+             console.log(response.data.data[0].id);
 
-            const wishId = response.data[0].id;
+             const wishId = response.data.data[0].id;
 
             setWishId(wishId);
 
@@ -40,11 +41,11 @@ export default function HeaderProduct(props) {
             
         }catch(e){
             console.log(e.response)
-            console.log(e.response.status);
-            if(e.response.status === 404){
-                setIsFavorite(false)
-            }
-        }
+           console.log(e.response.status);
+             if(e.response.status === 404){
+                 setIsFavorite(false)
+             }
+         }
 
         
     }, [product])

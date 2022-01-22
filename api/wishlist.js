@@ -2,6 +2,9 @@ import api from "./api";
 
 const WishList ={
 
+    createWish:() => {
+        return api.post(`wish`);
+    },
     wish:() =>{
         return api.get(`wishes`);
     },

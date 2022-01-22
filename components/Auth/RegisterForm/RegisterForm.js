@@ -6,7 +6,7 @@ import api from '../../../api/api';
 import User from '../../../api/user';
 import Routes from '../../../constants/Routes';
 import {toast} from "react-toastify";
-
+import WishList from '../../../api/wishlist';
 
 
 export default function RegisterForm(props) {
@@ -68,6 +68,8 @@ export default function RegisterForm(props) {
             setResult('Usuario registrado correctamente');
 
             if(response.data){
+                const wish = await WishList.createWish();
+                console.log(wish);
                 showLoginForm();
             }
            // console.log(response.data.email);
