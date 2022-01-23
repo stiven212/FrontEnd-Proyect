@@ -10,6 +10,7 @@
 @import "../pages/categories/id.scss";
 @import "../pages/search.scss";
 @import "../pages/cart.scss";
+@import "../pages/orders.scss";
 
 // Components
 
@@ -31,6 +32,7 @@
 @import "../components/Product/InfoProduct/InfoProduct.scss";
 @import "../components/Product/CarouselImages/CarouselImages.scss";
 @import "../pages/wishlist.scss";
-@import '../components/Cart/SummaryCart/SummaryCart.scss';
+@import "../components/Cart/SummaryCart/SummaryCart.scss";
 @import "../components/Cart/AddressShipping/AddressShipping.scss";
 @import "../components/Cart/Payment/Payment.scss";
+@import "../components/Orders/Order/order.scss";

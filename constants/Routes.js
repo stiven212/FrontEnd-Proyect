@@ -1,6 +1,6 @@
 const publicRoutes = {
-    LOGIN : '/login',
+  LOGIN: "/login",
 };
 const privateRoutes = {
-    HOME : "/",
-}
+  HOME: "/",
+};

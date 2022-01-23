@@ -1,20 +1,18 @@
-.info-product{
+.info-product {
+  overflow: hidden;
 
-    overflow: hidden;
+  &__content {
+    padding: 14px;
+    color: $font-grey;
 
+    &-color {
+      display: flex;
+      margin-top: 20px;
 
-    &__content {
-        padding: 14px;
-        color: $font-grey;
-
-        &-color{
-            display: flex;
-            margin-top: 20px;
-
-            h4{
-                color: $primary;
-                margin-right: 10px;
-            }
-        }
+      h4 {
+        color: $primary;
+        margin-right: 10px;
+      }
     }
+  }
 }

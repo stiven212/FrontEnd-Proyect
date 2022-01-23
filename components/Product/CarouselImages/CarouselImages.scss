@@ -1,28 +1,27 @@
-.carousel-images{
-    margin: 0 -5px;
+.carousel-images {
+  margin: 0 -5px;
 
-    .slick-slide {
-        padding: 5px;
+  .slick-slide {
+    padding: 5px;
 
-        .ant-image:hover{
-            cursor: pointer;
-            opacity: 0.8;
-        }
+    .ant-image:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+
+  .slick-arrow {
+    z-index: 1;
+
+    &::before {
+      font-size: 30px;
     }
 
-    .slick-arrow{
-        z-index: 1;
-
-
-        &::before{
-            font-size: 30px;
-        }
-
-        &.slick-next{
-            right: 20px;
-        }
-        &.slick-prev{
-            left: 20px;
-        }
+    &.slick-next {
+      right: 20px;
     }
+    &.slick-prev {
+      left: 20px;
+    }
+  }
 }

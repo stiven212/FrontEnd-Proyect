@@ -1,34 +1,29 @@
 @import "./index.scss";
 
-
-.ant-form{
-    .ant-form-item-control{
-        .ant-input{
-            border: 1px solid $border-grey-light;
-            font-size: 16px;
-        }
-
-        
+.ant-form {
+  .ant-form-item-control {
+    .ant-input {
+      border: 1px solid $border-grey-light;
+      font-size: 16px;
     }
+  }
 
-    .actions{
-        display: flex;
-        align-items: center;
-        justify-content: flex-end !important;
-    }
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end !important;
+  }
 
-    .submit{
-        background-color: $primary; 
-        color: $font-light;
-        margin: 0;
-    }
+  .submit {
+    background-color: $primary;
+    color: $font-light;
+    margin: 0;
+  }
 }
 
-    .contentStyle{
-                background-image: url(https://imagenes.lainformacion.com/files/image_656_370/uploads/imagenes/2018/12/15/5c14da80ed56f.jpeg);
+.contentStyle {
+  background-image: url(https://imagenes.lainformacion.com/files/image_656_370/uploads/imagenes/2018/12/15/5c14da80ed56f.jpeg);
 }
 
-#first{
-    
+#first {
 }
-  

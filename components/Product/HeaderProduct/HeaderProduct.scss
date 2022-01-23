@@ -1,118 +1,112 @@
-.header-product{
-    &.ant-row{
-        margin: 1em;
+.header-product {
+  &.ant-row {
+    margin: 1em;
+  }
+
+  &__title {
+    position: relative;
+    background-color: $background-dark-absolute;
+    padding: 10px 0;
+    color: $font-light;
+    text-align: center;
+    font-weight: bold;
+
+    .anticon {
+      position: absolute;
+      height: 100%;
+      top: 0;
+      right: 9px;
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      padding: 0;
+      border: 0;
+      font-size: 18px;
+      opacity: 1 !important;
     }
+  }
 
-    &__title{
-        position: relative;
-        background-color: $background-dark-absolute;
-        padding: 10px 0;
-        color: $font-light;
-        text-align: center;
-        font-weight: bold;
+  &__delivery {
+    text-align: center;
+    color: $primary;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 0;
+  }
 
-        
+  &__summary {
+    background-color: $background-light;
+    padding: 20px;
+    font-size: 14px;
+  }
 
-            
-            
-            .anticon{
-                position: absolute;
-                height: 100%;
-                top: 0;
-                right: 9px;
-                display: flex;
-                align-items: center;
-                background-color: transparent;
-                padding: 0;
-                border: 0;
-                font-size: 18px;
-                opacity: 1 !important;
-                
-            }
-        
-    }
+  &__buy {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $background-dark-absolute;
+    color: $font-light;
+    padding: 15px 20px;
+    margin-top: 15px;
 
-    &__delivery{
-        text-align: center;
-        color: $primary;
-        font-weight: bold;
-        font-size: 18px;
-        padding: 10px 0;
-    }
+    &-price {
+      display: flex;
+      flex-direction: column;
 
-    &__summary{
-        background-color: $background-light;
-        padding: 20px;
-        font-size: 14px;
-    }
+      > p {
+        text-align: left;
+        color: $font-grey;
+        margin: 0;
+      }
 
-    &__buy{
+      &-actions {
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        background-color: $background-dark-absolute;
-        color: $font-light;
-        padding: 15px 20px;
-        margin-top: 15px;
+        align-items: baseline;
 
-        &-price{
-            display: flex;
-            flex-direction: column;
+        > P {
+          margin: 0;
+          font-weight: bold;
 
-            >p{
-                text-align: left;
-                color: $font-grey;
-                margin: 0;
-            }
+          &:first-of-type {
+            font-size: 25px;
+          }
 
-            &-actions{
-                display: flex;
-                justify-content: space-between;
-                align-items: baseline;
-
-                >P{
-                    margin: 0;
-                    font-weight: bold;
-
-                    &:first-of-type{
-                        font-size: 25px;
-                    }
-
-                    &:last-of-type{
-                        font-size: 40px;
-                        color: $primary;
-                    }
-                }
-            }
+          &:last-of-type {
+            font-size: 40px;
+            color: $primary;
+          }
         }
-        &-btn{
-            position: relative;
-            width: 200px;
-            background-color: $primary !important;
-            color: $font-light !important;
-            font-size: 18px;
-            padding: 19px 0;
-            left: -20px;
-            transition: 0.2s;
-            height: 57px !important;
-            border: none !important;
-
-            &:hover {
-                left: -10px;
-            }
-
-            &::after{
-                position: absolute;
-                top: 10px;
-                right: -15px;
-                width: 36px;
-                height: 37px;
-                border-radius: 10px 4px 10px 0;
-                -ms-transform: rotate(45deg) skew(15deg, 15deg);
-                transform: rotate(45deg) skew(15deg, 15deg);
-                background-color: $primary;
-                content: "";
-            }
-        }
+      }
     }
+    &-btn {
+      position: relative;
+      width: 200px;
+      background-color: $primary !important;
+      color: $font-light !important;
+      font-size: 18px;
+      padding: 19px 0;
+      left: -20px;
+      transition: 0.2s;
+      height: 57px !important;
+      border: none !important;
+
+      &:hover {
+        left: -10px;
+      }
+
+      &::after {
+        position: absolute;
+        top: 10px;
+        right: -15px;
+        width: 36px;
+        height: 37px;
+        border-radius: 10px 4px 10px 0;
+        -ms-transform: rotate(45deg) skew(15deg, 15deg);
+        transform: rotate(45deg) skew(15deg, 15deg);
+        background-color: $primary;
+        content: "";
+      }
+    }
+  }
 }

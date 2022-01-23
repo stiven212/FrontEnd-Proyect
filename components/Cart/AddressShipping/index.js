@@ -1,1 +1,1 @@
-export {default} from "./AddressShipping";
+export { default } from "./AddressShipping";

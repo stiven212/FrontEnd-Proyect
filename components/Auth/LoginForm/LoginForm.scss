@@ -1,13 +1,11 @@
-.login-form{
-    
-    .ant-form-item{
+.login-form {
+  .ant-form-item {
+    .actions {
+      justify-content: space-between !important;
 
-        .actions{
-            justify-content: space-between !important;
-            
-            .ant-btn-ghost{
-                margin: 0;
-            }
-        }
+      .ant-btn-ghost {
+        margin: 0;
+      }
     }
+  }
 }

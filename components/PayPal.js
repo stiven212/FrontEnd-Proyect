@@ -1,17 +1,16 @@
 import React, { useRef, useEffect, useState } from "react";
 
 export default function Paypal(props) {
-  const {totalPrice, setcheckout} = props;
+  const { totalPrice, setcheckout } = props;
   const paypal = useRef();
 
   const [valueToPay, setvalueToPay] = useState(0);
 
-  console.log('valueToPay', valueToPay);
+  console.log("valueToPay", valueToPay);
   // console.log('valueToPay', valueToPay);
 
   // XD
   // XD
-
 
   useEffect(() => {
     setvalueToPay(totalPrice);

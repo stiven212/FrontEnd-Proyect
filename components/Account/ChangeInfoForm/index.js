@@ -1,1 +1,1 @@
-export {default} from "./ChangeInfoForm";
+export { default } from "./ChangeInfoForm";
