@@ -10,7 +10,6 @@ import Link from "next/link";
 import useAuth from "../hooks/useAuth";
 import Seo from "../components/Seo";
 
-
 export default function Home() {
   const { auth } = useAuth();
 

@@ -14,7 +14,7 @@ export default function ListProducts(props) {
             lg={{ span: 5, offset: 1 }}
             md={{ span: 6, offset: 2 }}
             sm={{ span: 10, offset: 2 }}
-            xs={{ span: 24 }}
+            xs={{ span: 10, offset: 2 }}
           >
             <Product product={product} />
           </Col>
@@ -31,14 +31,14 @@ function Product(props) {
       <Link href={`/categories/products/${product.id}`}>
         <a>
           <div className="list-products__product-image">
-            {/* <Image src={product.image1} alt={product.name} /> */}
+            <Image src={product.image1} alt={product.name} preview={false} />
 
-            <Image
+            {/* <Image
               src={
                 "http://localhost:8000/storage/products/APOu2peZNTuU863VPmES2OwRto1uWgPdA17h6OUh.png"
               }
               preview={false}
-            />
+            /> */}
             <div className="list-products__product-image-info">
               <span className="price">{product.price}$</span>
 

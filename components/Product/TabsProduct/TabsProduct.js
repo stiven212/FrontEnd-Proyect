@@ -11,12 +11,12 @@ export default function TabsProduct(props) {
   }
 
   return (
-    <>
+    <div>
       <Tabs defaultActiveKey="1" onChange={callback} className="tabs-product">
         <TabPane tab="Informacion" key="1">
           <InfoProduct product={product} />
         </TabPane>
       </Tabs>
-    </>
+    </div>
   );
 }

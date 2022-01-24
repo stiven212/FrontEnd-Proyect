@@ -21,8 +21,12 @@
       align-items: center;
 
       .ant-image {
-        height: 125px;
+        height: 100px;
         padding-right: 20px;
+
+        .ant-image-img {
+          height: 100px;
+        }
       }
     }
   }

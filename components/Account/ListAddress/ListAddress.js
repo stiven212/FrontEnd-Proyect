@@ -30,7 +30,7 @@ export default function ListAddress(props) {
       ) : (
         <Row>
           {map(addresses, (address) => (
-            <Col key={address.id} span={8}>
+            <Col key={address.id} lg={6} md={8} sm={12} xs={24}>
               <Address
                 address={address}
                 setReloadAddresses={setReloadAddresses}

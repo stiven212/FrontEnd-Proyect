@@ -81,18 +81,18 @@
     }
     &-btn {
       position: relative;
-      width: 200px;
+      width: 180px;
       background-color: $primary !important;
       color: $font-light !important;
       font-size: 18px;
       padding: 19px 0;
-      left: -20px;
+      left: 40px;
       transition: 0.2s;
       height: 57px !important;
       border: none !important;
 
       &:hover {
-        left: -10px;
+        left: 10px;
       }
 
       &::after {

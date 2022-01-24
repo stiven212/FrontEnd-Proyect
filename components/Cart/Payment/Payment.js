@@ -57,7 +57,7 @@ export default function Payment(props) {
             console.log(estado);
             setpayment(estado);
 
-            message.loading("Generando orden de compra", 1.2);
+            message.loading("Generando orden de compra", 1.4);
           },
           error: function (respuesta) {
             alert("Error en la llamada " + respuesta.responseText);
@@ -99,11 +99,10 @@ export default function Payment(props) {
           }
 
           message.success("Orden creada correctamente");
+          console.log("orden creada");
           removeAllProductsCart();
 
           router.push("/orders");
-
-          console.log("orden creada");
         }
       } else {
         console.log("A la espera de transacciones");

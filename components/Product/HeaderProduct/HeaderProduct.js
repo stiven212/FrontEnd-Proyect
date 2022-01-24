@@ -15,8 +15,12 @@ export default function HeaderProduct(props) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const [wishId, setWishId] = useState(0);
+
+  const { auth, logout } = useAuth();
+
   useEffect(async () => {
     try {
+      // if(auth){}
       const response = await WishList.wish();
       console.log(response.data);
       console.log(response.data.data[0].id);
@@ -31,25 +35,37 @@ export default function HeaderProduct(props) {
       if (size(response1.data) > 0) setIsFavorite(true);
       else setIsFavorite(false);
     } catch (e) {
-      console.log(e.response);
-      console.log(e.response.status);
-      if (e.response.status === 404) {
-        setIsFavorite(false);
+      if (e.response) {
+        console.log(e.response);
+        console.log(e.response.status);
+        if (e.response.status === 404) {
+          setIsFavorite(false);
+        }
       }
     }
   }, [product]);
 
   return (
-    <Row className="header-product">
-      <Col xs={24} sm={12} lg={{ span: 8, offset: 1 }}>
-        <Image
+    <Row className="header-product" justify="center">
+      <Col
+        xs={12}
+        sm={12}
+        lg={{ span: 8, offset: 1 }}
+        md={{ span: 8, offset: 1 }}
+      >
+        {/* <Image
           src="http://localhost:8000/storage/products/2VZWZxHZo7bxmIkwiToqQmmuchNBn8i7VlGmkMAH.png"
           alt={name}
           preview={true}
-        />
-        {/* <Image src={image1} alt={name} /> */}
+        /> */}
+        <Image src={image1} alt={name} />
       </Col>
-      <Col xs={24} sm={12} lg={{ span: 13, offset: 1 }}>
+      <Col
+        xs={24}
+        sm={24}
+        lg={{ span: 13, offset: 1 }}
+        md={{ span: 13, offset: 1 }}
+      >
         <Info product={product} isFavorite={isFavorite} wishId={wishId} />
       </Col>
     </Row>
@@ -115,19 +131,36 @@ function Info(props) {
         dangerouslySetInnerHTML={{ __html: description }}
       />
       <div className="header-product__buy">
-        <div className="header-product__buy-price">
-          <p> Precio de Antes: ${sale}</p>
-          <div className="header-product__buy-price-actions">
-            <p>-{Math.floor(((sale - price) / sale) * 100)}%</p>
-            <p>${price}</p>
-          </div>
-        </div>
-        <Button
-          className="header-product__buy-btn"
-          onClick={() => addProductCart(id)}
-        >
-          Comprar
-        </Button>
+        {/* <div className="header-product__buy-price"> */}
+        <Row justify="center">
+          <Col
+            lg={{ span: 12 }}
+            md={{ span: 20, offset: 0 }}
+            sm={{ span: 21, offset: 0 }}
+            xs={{ span: 20, offset: 0 }}
+          >
+            <p> Precio de Antes: ${sale}</p>
+            <div className="header-product__buy-price-actions">
+              <p>-{Math.floor(((sale - price) / sale) * 100)}%</p>
+              <p>${price}</p>
+            </div>
+          </Col>
+          <Col
+            lg={{ span: 10, offset: 2 }}
+            md={{ span: 19, offset: 0 }}
+            sm={{ span: 21, offset: 0 }}
+            xs={{ span: 21, offset: 0 }}
+          >
+            <Button
+              className="header-product__buy-btn"
+              onClick={() => addProductCart(id)}
+            >
+              Comprar
+            </Button>
+          </Col>
+        </Row>
+
+        {/* </div> */}
       </div>
     </>
   );

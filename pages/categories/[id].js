@@ -37,9 +37,7 @@ export default function categorie() {
   console.log(query.id);
   return (
     <BasicLayout className="categorie">
-      {!products && <Spin tip="Cargando productos">
-    
-  </Spin>}
+      {!products && <Spin tip="Cargando productos"></Spin>}
       {products && size(products) === 0 && (
         <div>
           <h3>No hay productos</h3>

@@ -14,6 +14,7 @@ import {
   DesktopOutlined,
   ContainerOutlined,
   MailOutlined,
+  MenuOutlined
 } from "@ant-design/icons";
 import BasicModal from "../../Modal/BasicModal";
 import Auth from "../../Auth";
@@ -81,36 +82,45 @@ export default function MenuWeb() {
       <Layout>
         <Row justify="center">
           {screens.md && (
-            <>
-              <Col
-                className="menu__left"
-                lg={{ span: 11 }}
-                md={{ span: 13 }}
-                sm={11}
-                xs={11}
-              >
-                <MenuPlatforms categories={categories} />
-              </Col>
-
-              <Col
-                className="menu__right"
-                lg={{ span: 6 }}
-                md={{ span: 5, offset: 1 }}
-              >
-                {user !== undefined && (
-                  <MenuOptions
-                    onShowModal={onShowModal}
-                    user={user}
-                    logout={logout}
-                  />
-                )}
-              </Col>
-            </>
+            <Col
+              className="menu__left"
+              lg={{ span: 11 }}
+              md={{ span: 23 }}
+              sm={11}
+              xs={11}
+            >
+              <MenuPlatforms categories={categories} />
+            </Col>
           )}
 
-          <Col lg={{ span: 0 }} md={{ span: 0 }} sm={{ span: 0 }} xs={0}>
-            <MenuToggle />
+          {screens.lg && (
+            <Col
+              className="menu__right"
+              lg={{ span: 6 }}
+              md={{ span: 1, offset: 1 }}
+            >
+              {user !== undefined && (
+                <MenuOptions
+                  onShowModal={onShowModal}
+                  user={user}
+                  logout={logout}
+                />
+              )}
+            </Col>
+          )}
+
+          <Col lg={{ span: 0 }} md={{ span: 1 }} sm={{ span: 0 }} xs={0}>
+            
+          <MenuOutlined />
+            {/* <MenuToggle /> */}
           </Col>
+          <Col lg={{ span: 0 }} md={{ span: 0 }} sm={{ span: 1 }} xs={24}>
+            
+          <MenuOutlined />
+            {/* <MenuToggle /> */}
+          </Col>
+
+          
         </Row>
       </Layout>
       <BasicModal

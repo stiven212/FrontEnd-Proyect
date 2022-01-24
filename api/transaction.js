@@ -7,7 +7,7 @@ export default function PayPhone(data, value) {
     //amountWithoutTax: cost,
     amountWithTax: cost - cost * 0.12,
     Tax: cost * 0.12,
-    email: "stiven.lopez@gmail.com",
+    email: "stiven.lopez212@gmail.com",
     clientTransactionId: data,
     //  clientTransactionId: "Pruebasx0077",
     responseUrl: "http://localhost:3000/cart",

@@ -19,7 +19,7 @@ export default function CarouselImages(props) {
 
   return (
     <Slider {...settings}>
-      <Image
+      {/* <Image
         key={1}
         src={
           "http://localhost:8000/storage/products/2bzeaTN8hf6DcA6VSAvzfWYWcOt9dGnpdgS1T3eK.png"
@@ -63,17 +63,42 @@ export default function CarouselImages(props) {
         alt={product.name}
         onClick={() => console.log("Abrir imagen")}
         preview={true}
+      /> */}
+      <Image
+        key={1}
+        src={product.image1}
+        alt={product.name}
+        onClick={() => console.log("Abrir imagen")}
+        preview={true}
       />
-      {/* <Image key={1} src={product.image1} alt={product.name} 
-            onClick={() => console.log("Abrir imagen")} preview={true}/>
-            <Image key={2} src={product.image2} alt={product.name} 
-            onClick={() => console.log("Abrir imagen")} preview={true}/>
-            <Image key={3} src={product.image3} alt={product.name} 
-            onClick={() => console.log("Abrir imagen")} preview={true}/>
-            <Image key={4} src={product.image4} alt={product.name} 
-            onClick={() => console.log("Abrir imagen")} preview={true}/>
-            <Image key={5} src={product.image5} alt={product.name} 
-            onClick={() => console.log("Abrir imagen")} preview={true}/>  */}
+      <Image
+        key={2}
+        src={product.image2}
+        alt={product.name}
+        onClick={() => console.log("Abrir imagen")}
+        preview={true}
+      />
+      <Image
+        key={3}
+        src={product.image3}
+        alt={product.name}
+        onClick={() => console.log("Abrir imagen")}
+        preview={true}
+      />
+      <Image
+        key={4}
+        src={product.image4}
+        alt={product.name}
+        onClick={() => console.log("Abrir imagen")}
+        preview={true}
+      />
+      <Image
+        key={5}
+        src={product.image5}
+        alt={product.name}
+        onClick={() => console.log("Abrir imagen")}
+        preview={true}
+      />
     </Slider>
   );
 }

@@ -32,7 +32,7 @@ export default function search() {
   }, [query]);
   return (
     <BasicLayout className="search">
-      {!products && <Spin />}
+      {!products && <Spin tip="Buscando producto" />}
       {products && size(products) === 0 && (
         <div>
           <h3>No se encontrado productos</h3>

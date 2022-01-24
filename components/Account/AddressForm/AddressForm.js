@@ -54,7 +54,7 @@ export default function AddressForm(props) {
 
   return (
     <div>
-      <Form labelCol={{ span: 8 }} onFinish={onFinish}>
+      <Form labelCol={{ span: 6 }} onFinish={onFinish}>
         <Form.Item
           name="address"
           label="Dirección"

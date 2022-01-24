@@ -10,12 +10,12 @@ const Detail = {
   addProducts: (data, value) => {
     return api.post(`/details/${data}/products/${value}`);
   },
-  getOrders:() => {
+  getOrders: () => {
     return api.get(`/details`);
   },
-  getOrder:(data) => {
+  getOrder: (data) => {
     return api.get(`/details/${data}`);
-  }
+  },
 };
 
 export default Detail;
