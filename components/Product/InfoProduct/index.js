@@ -1,1 +1,1 @@
-export {default} from "./InfoProduct";
+export { default } from "./InfoProduct";

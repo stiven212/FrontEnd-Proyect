@@ -1,22 +1,22 @@
-.change-info-form{
-    padding: 20px 15px;
+.change-info-form {
+  padding: 20px 15px;
 
-    > h4 {
-        color: $primary;
-        font-size: 22px;
+  > h4 {
+    color: $primary;
+    font-size: 22px;
+  }
+
+  > form {
+    text-align: center;
+
+    .btn {
+      padding-top: 1em;
+      justify-content: center;
+      //  margin: auto;
+      .submit {
+        padding: 0 60px;
+        margin: 0;
+      }
     }
-
-    > form{
-        text-align: center;
-
-        .btn{
-            padding-top: 1em;
-            justify-content: center;
-          //  margin: auto;
-            .submit{
-                padding: 0 60px;
-                margin: 0;
-            }
-        }
-    }
+  }
 }

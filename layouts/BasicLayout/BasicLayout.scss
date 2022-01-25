@@ -1,133 +1,128 @@
 .basic-layout {
-    min-height: 100vh;
-    
-   // background-color: rgb(24, 184, 168) !important;
-    background-image: url('https://media.istockphoto.com/photos/stone-background-portrait-backdrop-studio-backdrop-picture-id1306943029?k=20&m=1306943029&s=612x612&w=0&h=WR7E2p1DRhz79IYsAZIZSAPlbV0hv3AiPcllfbNYAnE=') !important;
-    background-size: cover;
-    background-position: center;
-    .content{
-        background-color: $background-grey-light;
-        height: calc(145vh - 2px);
-        width: 70%;
-        margin: auto;
-        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-        -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-        overflow-y: scroll;
+  min-height: 100vh;
 
-        &::-webkit-scrollbar{
-            display: none;
-        }
+  // background-color: rgb(24, 184, 168) !important;
+  background-image: url("https://media.istockphoto.com/photos/stone-background-portrait-backdrop-studio-backdrop-picture-id1306943029?k=20&m=1306943029&s=612x612&w=0&h=WR7E2p1DRhz79IYsAZIZSAPlbV0hv3AiPcllfbNYAnE=") !important;
+  background-size: cover;
+  background-position: center;
+  .content {
+    background-color: $background-grey-light;
+    height: calc(100vh - 130px);
+    width: 80%;
+    margin: auto;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    overflow-y: scroll;
 
-        .ant-row{
-            .ant-col-22{
-                .ant-carousel{
-                    .slick-slider{
-                        .slick-list{
-
-                            .slick-track{
-                                .slick-slide{
-                                    #first{
-
-                                        background-image: url(https://imagenes.lainformacion.com/files/image_656_370/uploads/imagenes/2018/12/15/5c14da80ed56f.jpeg);
-                                    }
-                                    #second{
-                                        background-image: url(https://pbs.twimg.com/media/Dw4pTJPWsAIPlQg.jpg);
-
-
-                                    }
-                                    #third{
-                                        background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMo4mQUoynhgpUTtLbojUjSqVS20jUGZVnjw&usqp=CAU);
-
-                                    }
-                                    #four{
-                                        background-image: url(https://review.chinabrands.com/chinabrands/seo/image/20181224/promocion_ventas.jpg);
-
-                                    }
-                                    #five{
-                                        background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReyJ_pUdtcJdXvqpXgUHkKlWnk40EiLM8QOA&usqp=CAU);
-
-                                    }
-                                    
-                                }
-                            }
-                        }
-                        .slick-dots{
-                            margin-left: 0 !important;
-                        }
-
-                        
-                    }
-                }
-
-            }
-            
-        }
-        .ant-row{
-            .ant-col-sm-20{
-               // background-color: violet;
-             
-
-                * {box-sizing: border-box;}
-
-                .ant-image{
-                    display: block;
-                    width: 100% !important;
-                    height: auto;
-                }
-                .overlay{
-                    position: absolute; 
-                    bottom: 0; 
-                    background: rgb(0, 0, 0);
-                    background: rgba(0, 0, 0, 0.5); /* Black see-through */
-                    color: #f1f1f1; 
-                    width: 100%;
-                    transition: .5s ease;
-                    opacity:0;
-                    color: white;
-                    font-size: 20px;
-                    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-                    padding: 20px;
-                    text-align: center;
-                }
-                
-            }
-            .gutter-row:hover .overlay {
-                opacity: 1;
-              }
-
-              .registrate{
-                margin: 50px;
-                height: 200px ;
-                    width: 600px;
-                  background-color: rgba(82, 217, 112, 1);
-                  border: 5px solid black;
-                  border-radius: 40px;
-
-                  .centered{
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    display: inline-flex;
-                    text-align: center;
-                    h2{
-
-                        color: white;
-                    }
-                    .ant-col{
-
-                        .ant-btn{
-                            margin-top: 1.1em;
-                            
-                        }
-                    }
-                    .centerbutton{
-                        transform: translate(-10%, 25%);
-                    }
-                  }
-              }
-
-        }
+    &::-webkit-scrollbar {
+      display: none;
     }
+
+    .ant-row {
+      .ant-col-22 {
+        .ant-carousel {
+          .slick-slider {
+            .slick-list {
+              .slick-track {
+                .slick-slide {
+                  #first {
+                    background-image: url("/image1.jpg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                  }
+                  #second {
+                    background-image: url("/image2.jpg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                  }
+                  #third {
+                    background-image: url("/image3.jpg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                  }
+                  #four {
+                    background-image: url("/image4.jpg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                  }
+                  #five {
+                    background-image: url("/image5.jpg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                  }
+                }
+              }
+            }
+            .slick-dots {
+              margin-left: 0 !important;
+            }
+          }
+        }
+      }
+    }
+    .ant-row {
+      .ant-col-sm-20 {
+        // background-color: violet;
+
+        * {
+          box-sizing: border-box;
+        }
+
+        .ant-image {
+          display: block;
+          width: 100% !important;
+          height: auto;
+        }
+        .overlay {
+          position: absolute;
+          bottom: 0;
+          background: rgb(0, 0, 0);
+          background: rgba(0, 0, 0, 0.5); /* Black see-through */
+          color: #f1f1f1;
+          width: 100%;
+          transition: 0.5s ease;
+          opacity: 0;
+          color: white;
+          font-size: 20px;
+          font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+            "Lucida Sans", Arial, sans-serif;
+          padding: 20px;
+          text-align: center;
+        }
+      }
+      .gutter-row:hover .overlay {
+        opacity: 1;
+      }
+
+      .registrate {
+        margin: 50px;
+        height: 200px;
+        width: 600px;
+        background-color: rgba(82, 217, 112, 1);
+        border: 5px solid black;
+        border-radius: 40px;
+
+        .centered {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          display: inline-flex;
+          text-align: center;
+          h2 {
+            color: white;
+          }
+          .ant-col {
+            .ant-btn {
+              margin-top: 1.1em;
+            }
+          }
+          .centerbutton {
+            transform: translate(-10%, 25%);
+          }
+        }
+      }
+    }
+  }
 }

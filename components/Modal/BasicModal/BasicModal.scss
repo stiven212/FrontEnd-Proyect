@@ -1,14 +1,14 @@
-.basic-modal{
-   .ant-modal-content{
-        .ant-modal-header{
-            background-color: $primary !important;
-            display: flex !important;
-            align-items: center;
-            justify-content: space-between;
+.basic-modal {
+  .ant-modal-content {
+    .ant-modal-header {
+      background-color: $primary !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: space-between;
 
-            .ant-modal-title{
-                color: $font-light;
-            }
-        }
+      .ant-modal-title {
+        color: $font-light;
+      }
     }
+  }
 }

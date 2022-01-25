@@ -1,74 +1,71 @@
-.top-bar{
-    height: 90px;
-    background-color: $background-dark;
-
-    .ant-row{
-        margin: 0;
-        padding: 0;
-        .ant-col{
-            padding: 0;
-        }
+.top-bar {
+  background-color: $background-dark;
+  padding-bottom: 2em;
+  height: 100%;
+  padding-top: 1em;
+  .ant-row {
+    margin: 0;
+    padding: 0;
+    .ant-col {
+      padding: 0;
     }
-    &__left{
-        display: flex !important;
-        align-items: center;
+  }
+  &__left {
+    display: flex !important;
+    align-items: center;
 
-        img{
-            height: 75px;
-            transition: all 0.5s;
+    img {
+      height: 75px;
+      transition: all 0.5s;
 
-            &:hover{
-                transform: translateX(-15px);
+      &:hover {
+        transform: translateX(-15px);
+      }
+    }
+  }
+
+  &__right {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+
+    .ant-input-search {
+      align-items: center;
+      width: 100% !important;
+      .ant-input-group {
+        .ant-input-affix-wrapper {
+          border: 0;
+          border-bottom: 3px solid $primary !important;
+          border-radius: 0;
+
+          background-color: transparent !important;
+          margin-right: 25px;
+          input {
+            background-color: transparent !important;
+            padding: 5px 0;
+            width: 200px;
+            font-size: 18px;
+            transition: width 0.7s;
+
+            &:focus {
+              width: 250px;
             }
+          }
         }
-    }
 
-    &__right{
-        display: flex !important;
-        align-items: center;
-        justify-content: flex-end;
-
-        .ant-input-search{
-            align-items: center;
-
-            .ant-input-group {
-
-                .ant-input-affix-wrapper {
-                    
-                    border: 0;
-                        border-bottom: 3px solid $primary !important;
-                        border-radius: 0;
-
-                    background-color: transparent !important;
-                    margin-right: 25px;
-                    input{
-                        background-color: transparent !important;
-                        padding: 5px 0;
-                         width: 200px;
-                         font-size: 18px;
-                         transition: width 0.7s;
-
-
-                         &:focus{
-                             width: 250px;
-                         }
-                    }
-                }
-
-                .ant-input-group-addon {
-                    background-color: transparent !important;
-                    button{
-                        background-color: transparent !important;
-                        border: transparent;
-                        .anticon-search{
-                            color: $primary;
-                            opacity: 1 !important;
-                            font-size: 30px;
-                        }
-                    }
-                }
+        .ant-input-group-addon {
+          background-color: transparent !important;
+          button {
+            background-color: transparent !important;
+            border: transparent;
+            .anticon-search {
+              color: $primary;
+              opacity: 1 !important;
+              font-size: 30px;
             }
-
+          }
         }
+      }
     }
+  }
 }

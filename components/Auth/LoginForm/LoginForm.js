@@ -1,95 +1,94 @@
-import React, {useState} from 'react'
-import {Form, Button, Input} from "antd";
+import React, { useState } from "react";
+import { Form, Button, Input } from "antd";
 //import { useAuth } from "../../../contexts/auth";
-import useAuth from '../../../hooks/useAuth';
-import User from '../../../api/user';
-
-
+import useAuth from "../../../hooks/useAuth";
+import User from "../../../api/user";
+import { useRouter } from "next/router";
 
 export default function LoginForm(props) {
-    const {showRegisterForm, showForgotForm, onCloseModal} = props;
-    const [loading, setLoading] = useState(false);
-   // const auth = useAuth();
-   const [result, setResult] = useState("");
-   const [userInfo, setUserInfo] = useState(null);
-   
-   
-   const {login} = useAuth();
+  const { showRegisterForm, showForgotForm, onCloseModal } = props;
+  const [loading, setLoading] = useState(false);
+  // const auth = useAuth();
+  const [result, setResult] = useState("");
+  const [userInfo, setUserInfo] = useState(null);
 
+  const router = useRouter();
 
-    const onFinish = async (formData) => {
-        setLoading(true);
-        setUserInfo(null);
-        setResult("Ingresando");
+  const { login } = useAuth();
 
-        try{
-            console.log(formData)
-            const userData = {
-                ...formData
-            };
+  const onFinish = async (formData) => {
+    setLoading(true);
+    setUserInfo(null);
+    setResult("Ingresando");
 
-            const response = await User.login(userData);
-            console.log('response', response);
-            login(response.data.token);
+    try {
+      console.log(formData);
+      const userData = {
+        ...formData,
+      };
 
-            setUserInfo(response.data);
-            onCloseModal();
+      const response = await User.login(userData);
+      console.log("response", response);
+      login(response.data.token);
 
-        }catch(e){
-            console.log('error');
-            setResult("Credenciales incorrectas");
-        }
-
+      setUserInfo(response.data);
+      if (response.data.role !== "ROLE_USER") {
+        router.push("/admin/products");
+      }
+      onCloseModal();
+    } catch (e) {
+      console.log("error");
+      setResult("Credenciales incorrectas");
     }
+  };
 
+  return (
+    <Form labelCol={{ span: 8 }} className="login-form" onFinish={onFinish}>
+      <Form.Item
+        name="email"
+        label="Correo Electronico"
+        rules={[
+          {
+            required: true,
+            message: "Ingresa tu correo",
+            type: "email",
+            message: "Correo no valido",
+          },
+        ]}
+      >
+        <Input placeholder="Correo electronico" />
+      </Form.Item>
+      <Form.Item
+        label="Contraseña"
+        name="password"
+        rules={[{ required: true, message: "Ingresa tu contraseña" }]}
+      >
+        <Input.Password placeholder="Contraseña" />
+      </Form.Item>
 
-    
-    return (
-        <Form labelCol={{span:8}} className='login-form' onFinish={onFinish}>
-            <Form.Item
-            name='email'
-            label= "Correo Electronico"
-            rules={[
-                { required:true, message: 'Ingresa tu correo' ,type:'email', message:'Correo no valido'}
-            ]}
-            >
-                <Input placeholder='Correo electronico'/>
-            </Form.Item>
-            <Form.Item
-            label= "Contraseña"
-            name="password"
-            rules={[
-                {required:true, message: 'Ingresa tu contraseña'    }
-            ]}
-            >
-                
+      <Form.Item>
+        <div className="actions">
+          <Button type="ghost" onClick={showRegisterForm}>
+            Registrarse
+          </Button>
+          <div>
+            <Button htmlType="submit" className="submit">
+              Ingresar
+            </Button>
+            <Button type="link" onClick={showForgotForm}>
+              ¿Has olvidado la contraseña?
+            </Button>
+          </div>
+        </div>
+      </Form.Item>
 
-                <Input.Password placeholder='Contraseña'/>
-                </Form.Item>
-
-                <Form.Item>
-
-
-                <div className='actions'>
-
-                    <Button type="ghost" onClick={showRegisterForm}>
-                        Registrarse
-                    </Button>
-                    <div>
-
-                    <Button htmlType='submit' className='submit' >
-                        Ingresar
-                    </Button>
-                    <Button type="link" onClick={showForgotForm}>¿Has olvidado la contraseña?</Button>
-                    </div>
-                </div>
-                </Form.Item>
-
-                <h1>{result}</h1>
-            {userInfo && <div>
-                Nombre: {userInfo.name}
-                token : {userInfo.token}
-                </div>}
-        </Form>
-    )
+      <h1>{result}</h1>
+      {userInfo && (
+        <div>
+          Nombre: {userInfo.name}
+          token : {userInfo.token}
+        </div>
+      )}
+    </Form>
+  );
 }

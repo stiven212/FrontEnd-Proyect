@@ -1,1 +1,1 @@
-export {default} from "./ListAddress";
+export { default } from "./ListAddress";

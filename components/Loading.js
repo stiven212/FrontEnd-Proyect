@@ -1,11 +1,5 @@
-import { Spin } from 'antd';
+import { Spin } from "antd";
 
-const Loading = () => (
-
-    <div>{Spin}</div>
-
-
-)
-
+const Loading = () => <div>{Spin}</div>;
 
 export default Loading;
