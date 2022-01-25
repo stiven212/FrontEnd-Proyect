@@ -46,37 +46,39 @@ function Carrousel() {
         <Col className="gutter-row" span={22}>
           <Carousel autoplay>
             <div>
-              <a href="https://example.com" target="_blank">
-                <h3 style={contentStyle} id="first"></h3>
-              </a>
+              <Link href="/categories/products/2">
+                <a>
+                  <h3 style={contentStyle} id="first"></h3>
+                </a>
+              </Link>
             </div>
             <div>
-              <a href="https://example.com" target="_blank">
-                <h3 style={contentStyle} id="second">
-                  2
-                </h3>
-              </a>
+              <Link href="/categories/2">
+                <a>
+                  <h3 style={contentStyle} id="second"></h3>
+                </a>
+              </Link>
             </div>
             <div>
-              <a href="https://example.com" target="_blank">
-                <h3 style={contentStyle} id="third">
-                  3
-                </h3>
-              </a>
+              <Link href="/categories/5">
+                <a>
+                  <h3 style={contentStyle} id="third"></h3>
+                </a>
+              </Link>
             </div>
             <div>
-              <a href="https://example.com" target="_blank">
-                <h3 style={contentStyle} id="four">
-                  4
-                </h3>
-              </a>
+              <Link href="/categories/products/20">
+                <a>
+                  <h3 style={contentStyle} id="four"></h3>
+                </a>
+              </Link>
             </div>
             <div>
-              <a href="https://example.com" target="_blank">
-                <h3 style={contentStyle} id="five">
-                  5
-                </h3>
-              </a>
+              <Link href="/categories/products/34">
+                <a>
+                  <h3 style={contentStyle} id="five"></h3>
+                </a>
+              </Link>
             </div>
           </Carousel>
         </Col>
@@ -108,9 +110,13 @@ function Genres() {
             src="https://media.gq.com.mx/photos/616d8b8b7cf20cb28245520c/1:1/w_1999,h_1999,c_limit/ropa-casual-de-hombre-con-saco-como-combinar-con-que-usar.jpg"
             placeholder="blur"
           />
-          <div class="overlay">
-            <div class="text">Hombres</div>
-          </div>
+          <Link href="/categories/9">
+            <a>
+              <div class="overlay">
+                <div class="text">Hombres</div>
+              </div>
+            </a>
+          </Link>
         </Col>
         <Col
           className="gutter-row"
@@ -125,9 +131,13 @@ function Genres() {
             src="https://www.myoutfie.com/historias/wp-content/uploads/2019/10/ropa-mujer-casual-5.jpg"
             placeholder="blur"
           />
-          <div class="overlay">
-            <div class="text">Mujeres</div>
-          </div>
+          <Link href="/categories/8">
+            <a>
+              <div class="overlay">
+                <div class="text">Mujeres</div>
+              </div>
+            </a>
+          </Link>
         </Col>
         <Col
           className="gutter-row"
@@ -142,9 +152,13 @@ function Genres() {
             src="https://i.pinimg.com/550x/d6/58/70/d65870a3279c9168b3a3406634d1b370.jpg"
             placeholder="blur"
           />
-          <div class="overlay">
-            <div class="text">Niños</div>
-          </div>
+          <Link href="/categories/7">
+            <a>
+              <div class="overlay">
+                <div class="text">Niños</div>
+              </div>
+            </a>
+          </Link>
         </Col>
         <Col
           className="gutter-row"
@@ -159,9 +173,13 @@ function Genres() {
             src="https://i.pinimg.com/originals/a0/26/17/a026174b67fb5027c443da5c22bdf850.jpg"
             placeholder="blur"
           />
-          <div class="overlay">
-            <div class="text">Niñas</div>
-          </div>
+          <Link href="/categories/7">
+            <a>
+              <div class="overlay">
+                <div class="text">Niñas</div>
+              </div>
+            </a>
+          </Link>
         </Col>
       </Row>
     </>
@@ -185,9 +203,11 @@ function Ofertas() {
         <Col className="gutter-row" span={22}>
           <Carousel autoplay>
             <div>
-              <a href="https://example.com" target="_blank">
-                <h3 style={contentStyle} id="second"></h3>
-              </a>
+              <Link href="/categories/6">
+                <a>
+                  <h3 style={contentStyle} id="second"></h3>
+                </a>
+              </Link>
             </div>
           </Carousel>
         </Col>

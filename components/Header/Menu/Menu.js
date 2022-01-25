@@ -7,14 +7,7 @@ import {
   HeartOutlined,
   ShoppingOutlined,
   LogoutOutlined,
-  AppstoreOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  PieChartOutlined,
-  DesktopOutlined,
-  ContainerOutlined,
-  MailOutlined,
-  MenuOutlined
+  MenuOutlined,
 } from "@ant-design/icons";
 import BasicModal from "../../Modal/BasicModal";
 import Auth from "../../Auth";
@@ -33,9 +26,8 @@ export default function MenuWeb() {
   const onCloseModal = () => setShowModal(false);
   const { useBreakpoint } = Grid;
 
-  
   const screens = useBreakpoint();
-  console.log(screens)
+  console.log(screens);
   // const {getAuthenticatedUser} = User();
   const [user, setUser] = useState(undefined);
 
@@ -113,27 +105,33 @@ export default function MenuWeb() {
 
           {/* {(screens.sm) && ( */}
 
+          <Col
+            lg={{ span: 0 }}
+            md={{ span: 2, offset: 2 }}
+            sm={{ span: 0 }}
+            xs={0}
+            className="menu__tablet"
+          >
+            <MenuTablet onShowModal={onShowModal} user={user} logout={logout} />
 
-            
-            <Col lg={{ span: 0 }} md={{ span: 2, offset:2 }} sm={{ span: 0 }} xs={0} className="menu__tablet">
-            
-            <MenuTablet onShowModal={onShowModal}
-                  user={user}
-                  logout={logout}
-                  />
-           
-            
             {/* <MenuToggle /> */}
           </Col>
-            {/* )} */}
-          <Col lg={{ span: 0 }} md={{ span: 0 }} sm={{span:4, offset:20 }} xs={{span:4, offset:20}} className="menu__mobile">
-              
-          
-            <MenuMobile />
+          {/* )} */}
+          <Col
+            lg={{ span: 0 }}
+            md={{ span: 0 }}
+            sm={{ span: 4, offset: 20 }}
+            xs={{ span: 4, offset: 20 }}
+            className="menu__mobile"
+          >
+            <MenuMobile
+              categories={categories}
+              onShowModal={onShowModal}
+              user={user}
+              logout={logout}
+            />
             {/* <MenuToggle /> */}
           </Col>
-
-          
         </Row>
       </Layout>
       <BasicModal
@@ -224,7 +222,7 @@ function MenuOptions(props) {
         </>
       ) : (
         <Menu.Item onClick={onShowModal} icon={<UserOutlined />}>
-          Mi cuenta
+          Iniciar sesión{" "}
         </Menu.Item>
       )}
     </Menu>
@@ -232,18 +230,17 @@ function MenuOptions(props) {
 }
 
 function MenuTablet(props) {
-
   const { onShowModal, user, logout } = props;
 
   const contentStyle = {
     color: "#fff",
-   
   };
 
-  const style= {
-    marginBottom:"1em",
+  const style = {
+    marginBottom: "1em",
     border: "4px solid white",
-    padding: "1em"
+    padding: "1em",
+    borderRadius: "10px",
   };
 
   const [visible, setVisible] = useState(false);
@@ -259,141 +256,144 @@ function MenuTablet(props) {
   const closeLogout = () => {
     logout();
     onClose();
-  }
-  
+  };
+
   const closeLogin = () => {
-    
     onShowModal();
     onClose();
-
-  }
+  };
 
   return (
-    
-   
     <Menu>
+      <Menu.Item
+        icon={
+          <MenuOutlined
+            style={{
+              fontSize: "20px",
+              color: "white",
+              backgroundColor: "transparent",
+            }}
+          />
+        }
+        onClick={showDrawer}
+      ></Menu.Item>
 
-    <Menu.Item  icon={<MenuOutlined style={{ fontSize: "20px", color:'white', backgroundColor:'transparent' }}/>} onClick={showDrawer}>
-    </Menu.Item>
-
-    <Drawer title="Menu Tablet" placement="right" onClose={onClose} visible={visible} drawerStyle={{backgroundColor:"gray", color:"white"}} footer={(
-     <>
-     {user ? (
-
-       <Row onClick={closeLogout}>
-
-      <Col span={7} offset={1} >
-      <LogoutOutlined style={{ fontSize: "25px", margin: "7px" }} />      </Col>
-      <Col span={10}>
-      <h2 style={contentStyle}>Cerrar sesion</h2>
-      </Col>
-      </Row>
-       ): null}
-     </>
-    )}>
-        <Row     >
-          {user ? (
-
-            <>
-        <Link href="/account">
-            
-
-          <Col span={24} style={style}>
-            <Row>
-
-            <Col span={7} offset={1}>
-          <UserOutlined style={{ fontSize: "30px" }} />
-            </Col>
-            <Col span={10}>
-            <h2 style={contentStyle}>{user.name}</h2>
-            </Col>
-            </Row>
-          </Col>
-            
-            </Link>
-
-            <Link href="/orders">
-              
-
-            <Col span={24} style={style}>
-              <Row>
-              <Col span={8} offset={1}>
-            <ShoppingOutlined style={{ fontSize: "30px", marginRight:"20px" }} />
-              </Col>
-              <Col span={10}>
-            <h2 style={contentStyle}>Ordenes</h2>
-              </Col>
-              </Row>
-            </Col>
-              
-
-            </Link>
-
-            <Link href="/cart">
-            <Col span={24} style={style}>
-              <Row>
-
-            <Col span={8} offset={1}>
-
-            <ShoppingCartOutlined
-                  style={{ fontSize: "30px", marginRight:"20px" }}
-                  />
-            </Col>
-            <Col span={10}>
-            <h2 style={contentStyle}>Carrito</h2>
-            </Col>
-
-              </Row>
-            </Col>
-
-            </Link>
-
-            <Link href="/wishlist">
-            <Col span={24} style={style}>
-
-              <Row>
-
-                <Col span={8} offset={1}>
-
-            <HeartOutlined style={{ fontSize: "30px", marginRight:"20px" }} />
+      <Drawer
+        title="Menu usuario"
+        placement="right"
+        onClose={onClose}
+        visible={visible}
+        drawerStyle={{ backgroundColor: "gray", color: "white" }}
+        footer={
+          <>
+            {user ? (
+              <Row onClick={closeLogout}>
+                <Col span={7} offset={1}>
+                  <LogoutOutlined style={{ fontSize: "25px", margin: "7px" }} />{" "}
                 </Col>
                 <Col span={10}>
-            <h2 style={contentStyle}>Favoritos</h2>
+                  <h2 style={contentStyle}>Cerrar sesion</h2>
+                </Col>
+              </Row>
+            ) : null}
+          </>
+        }
+      >
+        <Row>
+          {user ? (
+            <>
+              <Link href="/account">
+                <Col span={24} style={style} onClick={onClose}>
+                  <Row>
+                    <Col span={7} offset={1}>
+                      <UserOutlined style={{ fontSize: "30px" }} />
+                    </Col>
+                    <Col span={10}>
+                      <h2 style={contentStyle}>{user.name}</h2>
+                    </Col>
+                  </Row>
+                </Col>
+              </Link>
+
+              <Link href="/orders">
+                <Col span={24} style={style} onClick={onClose}>
+                  <Row>
+                    <Col span={8} offset={1}>
+                      <ShoppingOutlined
+                        style={{ fontSize: "30px", marginRight: "20px" }}
+                      />
+                    </Col>
+                    <Col span={10}>
+                      <h2 style={contentStyle}>Ordenes</h2>
+                    </Col>
+                  </Row>
+                </Col>
+              </Link>
+
+              <Link href="/cart">
+                <Col span={24} style={style} onClick={onClose}>
+                  <Row>
+                    <Col span={8} offset={1}>
+                      <ShoppingCartOutlined
+                        style={{ fontSize: "30px", marginRight: "20px" }}
+                      />
+                    </Col>
+                    <Col span={10}>
+                      <h2 style={contentStyle}>Carrito</h2>
+                    </Col>
+                  </Row>
+                </Col>
+              </Link>
+
+              <Link href="/wishlist">
+                <Col span={24} style={style} onClick={onClose}>
+                  <Row>
+                    <Col span={8} offset={1}>
+                      <HeartOutlined
+                        style={{ fontSize: "30px", marginRight: "20px" }}
+                      />
+                    </Col>
+                    <Col span={10}>
+                      <h2 style={contentStyle}>Favoritos</h2>
+                    </Col>
+                  </Row>
+                </Col>
+              </Link>
+            </>
+          ) : (
+            <Col span={24} style={style} onClick={closeLogin}>
+              <Row>
+                <Col span={8} offset={1}>
+                  <UserOutlined style={{ fontSize: "30px" }} />{" "}
+                </Col>
+                <Col span={14}>
+                  <h2 style={contentStyle}>Ingresar</h2>
                 </Col>
               </Row>
             </Col>
-
-            </Link>
-
-
-            </>
-          ): (
-            <Col span={24} style={style} onClick={closeLogin}>
-
-            <Row>
-
-              <Col span={8} offset={1} >
-
-              <UserOutlined style={{ fontSize: "30px" }}/>              </Col>
-              <Col span={14}>
-          <h2 style={contentStyle}>Ingresar</h2>
-              </Col>
-            </Row>
-          </Col>
           )}
-          
-
         </Row>
-    </Drawer>
+      </Drawer>
     </Menu>
-    
-  )
-
+  );
 }
 
-function MenuMobile(){
+function MenuMobile(props) {
+  const { categories, onShowModal, user, logout } = props;
 
   const [visible, setVisible] = useState(false);
+
+  const style = {
+    marginBottom: "3px",
+    border: "4px solid white",
+    padding: "10px",
+    textAlign: "center",
+    borderRadius: "10px",
+  };
+
+  const contentStyle = {
+    color: "#fff",
+  };
 
   const showDrawer = () => {
     setVisible(true);
@@ -403,40 +403,136 @@ function MenuMobile(){
     setVisible(false);
   };
 
+  const closeLogout = () => {
+    logout();
+    onClose();
+  };
+
+  const closeLogin = () => {
+    onShowModal();
+    onClose();
+  };
 
   return (
+    <Menu>
+      <Menu.Item
+        icon={
+          <MenuOutlined
+            style={{
+              fontSize: "20px",
+              color: "white",
+              backgroundColor: "transparent",
+            }}
+          />
+        }
+        onClick={showDrawer}
+      ></Menu.Item>
 
-<Menu>
-      <Menu.Item icon={<MenuOutlined style={{ fontSize: "20px", color:'white', backgroundColor:'transparent' }}/>} onClick={showDrawer}>
-
-      </Menu.Item>
-
-      <Drawer title="Menu Movil" placement="right" onClose={onClose} visible={visible} headerStyle={{backgroundColor:'#09D309'}} drawerStyle={{backgroundColor:'#25dbdb'}} footer="Cerrar sesion">
-        
+      <Drawer
+        title="Menu Movil"
+        placement="right"
+        onClose={onClose}
+        visible={visible}
+        headerStyle={{ backgroundColor: "#09D309" }}
+        drawerStyle={{ backgroundColor: "gray", color: "white" }}
+        footer={
+          <>
+            {user ? (
+              <Row onClick={closeLogout}>
+                <Col span={7} offset={1}>
+                  <LogoutOutlined style={{ fontSize: "25px", margin: "7px" }} />{" "}
+                </Col>
+                <Col span={10}>
+                  <h2 style={contentStyle}>Cerrar sesion</h2>
+                </Col>
+              </Row>
+            ) : null}
+          </>
+        }
+      >
         <Row>
-          <Col span={24}>
-        <h2 onClick={onClose}>Hola</h2>
-          </Col>
-          <Col span={24}>
-        <h2 onClick={onClose}>Hola</h2>
-          </Col>
-          <Col span={24} style={{textAlign:"center"}}>
-        <h2 onClick={onClose}>Hola</h2>
-          </Col>
-          <Col span={24}>
-        <h2 onClick={onClose}>Hola</h2>
-          </Col>
+          {map(categories, (categorie) => (
+            <Link href={`/categories/${categorie.id}`} key={categorie.id}>
+              <Col span={24} style={style} onClick={onClose}>
+                <h2 style={contentStyle}>{categorie.name}</h2>
+              </Col>
+            </Link>
+          ))}
+
+          {user ? (
+            <>
+              <Link href="/account">
+                <Col span={24} style={style}>
+                  <Row>
+                    <Col span={7} offset={1}>
+                      <UserOutlined style={{ fontSize: "30px" }} />
+                    </Col>
+                    <Col span={10}>
+                      <h2 style={contentStyle}>{user.name}</h2>
+                    </Col>
+                  </Row>
+                </Col>
+              </Link>
+
+              <Link href="/orders">
+                <Col span={24} style={style}>
+                  <Row>
+                    <Col span={8} offset={1}>
+                      <ShoppingOutlined
+                        style={{ fontSize: "30px", marginRight: "20px" }}
+                      />
+                    </Col>
+                    <Col span={10}>
+                      <h2 style={contentStyle}>Ordenes</h2>
+                    </Col>
+                  </Row>
+                </Col>
+              </Link>
+
+              <Link href="/cart">
+                <Col span={24} style={style}>
+                  <Row>
+                    <Col span={8} offset={1}>
+                      <ShoppingCartOutlined
+                        style={{ fontSize: "30px", marginRight: "20px" }}
+                      />
+                    </Col>
+                    <Col span={10}>
+                      <h2 style={contentStyle}>Carrito</h2>
+                    </Col>
+                  </Row>
+                </Col>
+              </Link>
+
+              <Link href="/wishlist">
+                <Col span={24} style={style}>
+                  <Row>
+                    <Col span={8} offset={1}>
+                      <HeartOutlined
+                        style={{ fontSize: "30px", marginRight: "20px" }}
+                      />
+                    </Col>
+                    <Col span={10}>
+                      <h2 style={contentStyle}>Favoritos</h2>
+                    </Col>
+                  </Row>
+                </Col>
+              </Link>
+            </>
+          ) : (
+            <Col span={24} style={style} onClick={closeLogin}>
+              <Row>
+                <Col span={4} offset={1}>
+                  <UserOutlined style={{ fontSize: "30px" }} />{" "}
+                </Col>
+                <Col span={14}>
+                  <h2 style={contentStyle}>Ingresar</h2>
+                </Col>
+              </Row>
+            </Col>
+          )}
         </Row>
-
       </Drawer>
-
     </Menu>
-
-
-
-
-  )
-
-
-
+  );
 }

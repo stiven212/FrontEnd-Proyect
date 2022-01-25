@@ -5,6 +5,7 @@ import Product from "../api/product";
 import { Spin } from "antd";
 import { size } from "lodash";
 import ListProducts from "../components/ListProducts";
+import Seo from "../components/Seo";
 
 export default function search() {
   const [products, setProducts] = useState(null);
@@ -32,6 +33,7 @@ export default function search() {
   }, [query]);
   return (
     <BasicLayout className="search">
+      <Seo title={`Buscando ${query.query}`} />
       {!products && <Spin tip="Buscando producto" />}
       {products && size(products) === 0 && (
         <div>

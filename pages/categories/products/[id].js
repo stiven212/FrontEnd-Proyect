@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Product from "../../../api/product";
 import HeaderProduct from "../../../components/Product/HeaderProduct";
 import TabsProduct from "../../../components/Product/TabsProduct";
+import Seo from "../../../components/Seo";
 
 export default function Producto() {
   const [product, setProduct] = useState(null);
@@ -24,6 +25,7 @@ export default function Producto() {
 
   return (
     <BasicLayout className="product">
+      <Seo title={product.name} />
       <HeaderProduct product={product} />
       <TabsProduct product={product} />
     </BasicLayout>

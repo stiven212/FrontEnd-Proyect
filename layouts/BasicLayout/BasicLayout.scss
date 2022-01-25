@@ -27,19 +27,29 @@
               .slick-track {
                 .slick-slide {
                   #first {
-                    background-image: url(https://imagenes.lainformacion.com/files/image_656_370/uploads/imagenes/2018/12/15/5c14da80ed56f.jpeg);
+                    background-image: url("/image1.jpg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
                   }
                   #second {
-                    background-image: url(https://pbs.twimg.com/media/Dw4pTJPWsAIPlQg.jpg);
+                    background-image: url("/image2.jpg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
                   }
                   #third {
-                    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMo4mQUoynhgpUTtLbojUjSqVS20jUGZVnjw&usqp=CAU);
+                    background-image: url("/image3.jpg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
                   }
                   #four {
-                    background-image: url(https://review.chinabrands.com/chinabrands/seo/image/20181224/promocion_ventas.jpg);
+                    background-image: url("/image4.jpg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
                   }
                   #five {
-                    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReyJ_pUdtcJdXvqpXgUHkKlWnk40EiLM8QOA&usqp=CAU);
+                    background-image: url("/image5.jpg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
                   }
                 }
               }

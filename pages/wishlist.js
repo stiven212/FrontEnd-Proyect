@@ -32,7 +32,7 @@ export default function wishlist() {
       <div className="wishlist__block">
         <div className="title">Lista de deseos</div>
         <div className="data">
-          {!products && <Spin />}
+          {!products && <Spin tip="Cargando favoritos"> </Spin>}
           {products && size(products) === 0 && (
             <div className="data__not-found">
               <h3>No tienes ningun juego en tu lista</h3>

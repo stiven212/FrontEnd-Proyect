@@ -173,39 +173,6 @@ function Policies() {
             o ningún otro medio y ofrecerlos para la redistribución o la reventa
             de ningún tipo.
           </p>
-          <p>
-            <strong>PROPIEDAD</strong>
-          </p>
-          <p>
-            Usted no puede declarar propiedad intelectual o exclusiva a ninguno
-            de nuestros productos, modificado o sin modificar. Todos los
-            productos son propiedad &nbsp;de los proveedores del contenido. En
-            caso de que no se especifique lo contrario, nuestros productos se
-            proporcionan&nbsp; sin ningún tipo de garantía, expresa o implícita.
-            En ningún esta compañía será &nbsp;responsables de ningún daño
-            incluyendo, pero no limitado a, daños directos, indirectos,
-            especiales, fortuitos o consecuentes u otras pérdidas resultantes
-            del uso o de la imposibilidad de utilizar nuestros productos.
-          </p>
-          <p>
-            <strong>POLÍTICA DE REEMBOLSO Y GARANTÍA</strong>
-          </p>
-          <p>
-            En el caso de productos que sean&nbsp; mercancías irrevocables
-            no-tangibles, no realizamos reembolsos después de que se envíe el
-            producto, usted tiene la responsabilidad de entender antes de
-            comprarlo. &nbsp;Le pedimos que lea cuidadosamente antes de
-            comprarlo. Hacemos solamente excepciones con esta regla cuando la
-            descripción no se ajusta al producto. Hay algunos productos que
-            pudieran tener garantía y posibilidad de reembolso pero este será
-            especificado al comprar el producto. En tales casos la garantía solo
-            cubrirá fallas de fábrica y sólo se hará efectiva cuando el producto
-            se haya usado correctamente. La garantía no cubre averías o daños
-            ocasionados por uso indebido. Los términos de la garantía están
-            asociados a fallas de fabricación y funcionamiento en condiciones
-            normales de los productos y sólo se harán efectivos estos términos
-            si el equipo ha sido usado correctamente. Esto incluye:
-          </p>
         </Modal>
         <Col
           lg={{ span: 10 }}
@@ -223,9 +190,20 @@ function Policies() {
           onCancel={handleCancel1}
           footer=""
         >
-          <p>Somee contents...</p>
-          <p>Somee contents...</p>
-          <p>Somee contents...</p>
+          <p>
+            <strong>PROPIEDAD</strong>
+          </p>
+          <p>
+            Usted no puede declarar propiedad intelectual o exclusiva a ninguno
+            de nuestros productos, modificado o sin modificar. Todos los
+            productos son propiedad &nbsp;de los proveedores del contenido. En
+            caso de que no se especifique lo contrario, nuestros productos se
+            proporcionan&nbsp; sin ningún tipo de garantía, expresa o implícita.
+            En ningún esta compañía será &nbsp;responsables de ningún daño
+            incluyendo, pero no limitado a, daños directos, indirectos,
+            especiales, fortuitos o consecuentes u otras pérdidas resultantes
+            del uso o de la imposibilidad de utilizar nuestros productos.
+          </p>
         </Modal>
       </Row>
       <Row>
@@ -253,9 +231,25 @@ function Policies() {
           onCancel={handleCancel2}
           footer=""
         >
-          <p>Somee contents...</p>
-          <p>Somee contents...</p>
-          <p>Somee contents...</p>
+          <p>
+            <strong>POLÍTICA DE REEMBOLSO Y GARANTÍA</strong>
+          </p>
+          <p>
+            En el caso de productos que sean&nbsp; mercancías irrevocables
+            no-tangibles, no realizamos reembolsos después de que se envíe el
+            producto, usted tiene la responsabilidad de entender antes de
+            comprarlo. &nbsp;Le pedimos que lea cuidadosamente antes de
+            comprarlo. Hacemos solamente excepciones con esta regla cuando la
+            descripción no se ajusta al producto. Hay algunos productos que
+            pudieran tener garantía y posibilidad de reembolso pero este será
+            especificado al comprar el producto. En tales casos la garantía solo
+            cubrirá fallas de fábrica y sólo se hará efectiva cuando el producto
+            se haya usado correctamente. La garantía no cubre averías o daños
+            ocasionados por uso indebido. Los términos de la garantía están
+            asociados a fallas de fabricación y funcionamiento en condiciones
+            normales de los productos y sólo se harán efectivos estos términos
+            si el equipo ha sido usado correctamente.
+          </p>
         </Modal>
       </Row>
     </Layout>

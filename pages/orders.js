@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Spin } from "antd";
 import { map, size } from "lodash";
 import BasicLayout from "../layouts/BasicLayout";
 import Detail from "../api/order";
 import Order from "../components/Orders/Order";
+import Seo from "../components/Seo";
 
 export default function Orders() {
   const [orders, setOrders] = useState(null);
@@ -20,12 +21,14 @@ export default function Orders() {
 
   return (
     <BasicLayout className="orders">
+      <Seo title="Mis pedidos" description="Lista de todos tus pedidos" />
       <div className="orders__block">
         <div className="title">Mis pedidos</div>
         <div className="data">
           {size(orders) === 0 ? (
             <h2 style={{ textAlign: "center" }}>
-              Todavia no has realizado ninguna compra
+              {!orders && <Spin tip="Cargando ordenes"> </Spin>}
+              {/* Todavia no has realizado ninguna compra */}
             </h2>
           ) : (
             <OrderList orders={orders} />

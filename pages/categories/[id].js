@@ -6,6 +6,7 @@ import { size, map } from "lodash";
 import { Spin, Alert } from "antd";
 import ListProducts from "../../components/ListProducts";
 import Pagination from "../../components/Pagination";
+import Seo from "../../components/Seo";
 
 export default function categorie() {
   const { query } = useRouter();
@@ -37,6 +38,7 @@ export default function categorie() {
   console.log(query.id);
   return (
     <BasicLayout className="categorie">
+      <Seo title={`Categoria ${query.id}`} />
       {!products && <Spin tip="Cargando productos"></Spin>}
       {products && size(products) === 0 && (
         <div>
