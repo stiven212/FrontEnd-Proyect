@@ -55,4 +55,39 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  &__mobile,
+  &__tablet{
+
+    .ant-menu {
+      border: 0;
+      display: inline-flex;
+      box-shadow: none;
+      height: 100%;
+      background: transparent;
+      
+      .ant-menu-item {
+        color: $font-light;
+        border-radius: 0 !important;
+
+        &:hover {
+          color: $font-light;
+          // background-color: red;
+          background-color: $background-grey-absolute;
+          &::before {
+            background-color: rgb(58, 58, 231) !important;
+          }
+        }
+        &.m-0 i {
+          margin: 0 !important;
+        }
+      }
+      .ant-menu-item-selected {
+        background-color: $background-grey-dark !important;
+        &:hover {
+          background-color: red;
+        }
+      }
+    }
+  }
 }

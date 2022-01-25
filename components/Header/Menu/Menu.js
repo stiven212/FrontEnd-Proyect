@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Menu, Col, Row, Button, Grid } from "antd";
+import { Layout, Menu, Col, Row, Button, Grid, Drawer } from "antd";
 import Link from "next/link";
 import {
   UserOutlined,
@@ -33,7 +33,9 @@ export default function MenuWeb() {
   const onCloseModal = () => setShowModal(false);
   const { useBreakpoint } = Grid;
 
+  
   const screens = useBreakpoint();
+  console.log(screens)
   // const {getAuthenticatedUser} = User();
   const [user, setUser] = useState(undefined);
 
@@ -85,7 +87,7 @@ export default function MenuWeb() {
             <Col
               className="menu__left"
               lg={{ span: 11 }}
-              md={{ span: 23 }}
+              md={{ span: 16 }}
               sm={11}
               xs={11}
             >
@@ -109,14 +111,25 @@ export default function MenuWeb() {
             </Col>
           )}
 
-          <Col lg={{ span: 0 }} md={{ span: 1 }} sm={{ span: 0 }} xs={0}>
+          {/* {(screens.sm) && ( */}
+
+
             
-          <MenuOutlined />
+            <Col lg={{ span: 0 }} md={{ span: 2, offset:2 }} sm={{ span: 0 }} xs={0} className="menu__tablet">
+            
+            <MenuTablet onShowModal={onShowModal}
+                  user={user}
+                  logout={logout}
+                  />
+           
+            
             {/* <MenuToggle /> */}
           </Col>
-          <Col lg={{ span: 0 }} md={{ span: 0 }} sm={{ span: 1 }} xs={24}>
-            
-          <MenuOutlined />
+            {/* )} */}
+          <Col lg={{ span: 0 }} md={{ span: 0 }} sm={{span:4, offset:20 }} xs={{span:4, offset:20}} className="menu__mobile">
+              
+          
+            <MenuMobile />
             {/* <MenuToggle /> */}
           </Col>
 
@@ -218,70 +231,212 @@ function MenuOptions(props) {
   );
 }
 
-function MenuToggle() {
-  const { SubMenu } = Menu;
+function MenuTablet(props) {
 
-  const [collapsed, setCollapsed] = useState(false);
+  const { onShowModal, user, logout } = props;
 
-  const { useBreakpoint } = Grid;
-
-  const screens = useBreakpoint();
-
-  // console.log(screens.sm);
-  // console.log(screens);
-
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
+  const contentStyle = {
+    color: "#fff",
+   
   };
 
+  const style= {
+    marginBottom:"1em",
+    border: "4px solid white",
+    padding: "1em"
+  };
+
+  const [visible, setVisible] = useState(false);
+
+  const showDrawer = () => {
+    setVisible(true);
+  };
+
+  const onClose = () => {
+    setVisible(false);
+  };
+
+  const closeLogout = () => {
+    logout();
+    onClose();
+  }
+  
+  const closeLogin = () => {
+    
+    onShowModal();
+    onClose();
+
+  }
+
   return (
-    <>
-      <div style={{ width: 256 }}>
-        <Button
-          type="primary"
-          onClick={toggleCollapsed}
-          style={{ marginBottom: 16 }}
-        >
-          {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined
+    
+   
+    <Menu>
+
+    <Menu.Item  icon={<MenuOutlined style={{ fontSize: "20px", color:'white', backgroundColor:'transparent' }}/>} onClick={showDrawer}>
+    </Menu.Item>
+
+    <Drawer title="Menu Tablet" placement="right" onClose={onClose} visible={visible} drawerStyle={{backgroundColor:"gray", color:"white"}} footer={(
+     <>
+     {user ? (
+
+       <Row onClick={closeLogout}>
+
+      <Col span={7} offset={1} >
+      <LogoutOutlined style={{ fontSize: "25px", margin: "7px" }} />      </Col>
+      <Col span={10}>
+      <h2 style={contentStyle}>Cerrar sesion</h2>
+      </Col>
+      </Row>
+       ): null}
+     </>
+    )}>
+        <Row     >
+          {user ? (
+
+            <>
+        <Link href="/account">
+            
+
+          <Col span={24} style={style}>
+            <Row>
+
+            <Col span={7} offset={1}>
+          <UserOutlined style={{ fontSize: "30px" }} />
+            </Col>
+            <Col span={10}>
+            <h2 style={contentStyle}>{user.name}</h2>
+            </Col>
+            </Row>
+          </Col>
+            
+            </Link>
+
+            <Link href="/orders">
+              
+
+            <Col span={24} style={style}>
+              <Row>
+              <Col span={8} offset={1}>
+            <ShoppingOutlined style={{ fontSize: "30px", marginRight:"20px" }} />
+              </Col>
+              <Col span={10}>
+            <h2 style={contentStyle}>Ordenes</h2>
+              </Col>
+              </Row>
+            </Col>
+              
+
+            </Link>
+
+            <Link href="/cart">
+            <Col span={24} style={style}>
+              <Row>
+
+            <Col span={8} offset={1}>
+
+            <ShoppingCartOutlined
+                  style={{ fontSize: "30px", marginRight:"20px" }}
+                  />
+            </Col>
+            <Col span={10}>
+            <h2 style={contentStyle}>Carrito</h2>
+            </Col>
+
+              </Row>
+            </Col>
+
+            </Link>
+
+            <Link href="/wishlist">
+            <Col span={24} style={style}>
+
+              <Row>
+
+                <Col span={8} offset={1}>
+
+            <HeartOutlined style={{ fontSize: "30px", marginRight:"20px" }} />
+                </Col>
+                <Col span={10}>
+            <h2 style={contentStyle}>Favoritos</h2>
+                </Col>
+              </Row>
+            </Col>
+
+            </Link>
+
+
+            </>
+          ): (
+            <Col span={24} style={style} onClick={closeLogin}>
+
+            <Row>
+
+              <Col span={8} offset={1} >
+
+              <UserOutlined style={{ fontSize: "30px" }}/>              </Col>
+              <Col span={14}>
+          <h2 style={contentStyle}>Ingresar</h2>
+              </Col>
+            </Row>
+          </Col>
           )}
-        </Button>
-        <Menu
-          defaultSelectedKeys={["1"]}
-          defaultOpenKeys={["sub1"]}
-          mode="inline"
-          theme="dark"
-          inlineCollapsed={collapsed}
-        >
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
-            Option 1
-          </Menu.Item>
-          <Menu.Item key="2" icon={<DesktopOutlined />}>
-            Option 2
-          </Menu.Item>
-          <Menu.Item key="3" icon={<ContainerOutlined />}>
-            Option 3
-          </Menu.Item>
-          <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-            <Menu.Item key="5">Option 5</Menu.Item>
-            <Menu.Item key="6">Option 6</Menu.Item>
-            <Menu.Item key="7">Option 7</Menu.Item>
-            <Menu.Item key="8">Option 8</Menu.Item>
-          </SubMenu>
-          <SubMenu
-            key="sub2"
-            icon={<AppstoreOutlined />}
-            title="Navigation Two"
-          >
-            <Menu.Item key="9">Option 9</Menu.Item>
-            <Menu.Item key="10">Option 10</Menu.Item>
-            <SubMenu key="sub3" title="Submenu">
-              <Menu.Item key="11">Option 11</Menu.Item>
-              <Menu.Item key="12">Option 12</Menu.Item>
-            </SubMenu>
-          </SubMenu>
-        </Menu>
-      </div>
-    </>
-  );
+          
+
+        </Row>
+    </Drawer>
+    </Menu>
+    
+  )
+
+}
+
+function MenuMobile(){
+
+  const [visible, setVisible] = useState(false);
+
+  const showDrawer = () => {
+    setVisible(true);
+  };
+
+  const onClose = () => {
+    setVisible(false);
+  };
+
+
+  return (
+
+<Menu>
+      <Menu.Item icon={<MenuOutlined style={{ fontSize: "20px", color:'white', backgroundColor:'transparent' }}/>} onClick={showDrawer}>
+
+      </Menu.Item>
+
+      <Drawer title="Menu Movil" placement="right" onClose={onClose} visible={visible} headerStyle={{backgroundColor:'#09D309'}} drawerStyle={{backgroundColor:'#25dbdb'}} footer="Cerrar sesion">
+        
+        <Row>
+          <Col span={24}>
+        <h2 onClick={onClose}>Hola</h2>
+          </Col>
+          <Col span={24}>
+        <h2 onClick={onClose}>Hola</h2>
+          </Col>
+          <Col span={24} style={{textAlign:"center"}}>
+        <h2 onClick={onClose}>Hola</h2>
+          </Col>
+          <Col span={24}>
+        <h2 onClick={onClose}>Hola</h2>
+          </Col>
+        </Row>
+
+      </Drawer>
+
+    </Menu>
+
+
+
+
+  )
+
+
+
 }

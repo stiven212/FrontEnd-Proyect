@@ -10,7 +10,7 @@ export default function Header() {
         <Col lg={24} sm={24} md={24} xs={24}>
           <TopBar />
         </Col>
-        <Col lg={24} sm={24} md={24}>
+        <Col lg={24} sm={24} md={24} xs={24}>
           <Menu />
         </Col>
       </Row>
