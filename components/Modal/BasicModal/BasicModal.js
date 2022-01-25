@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button } from "antd";
+import { Modal } from "antd";
 
 export default function BasicModal(props) {
   const { show, setShow, title, children, ...rest } = props;

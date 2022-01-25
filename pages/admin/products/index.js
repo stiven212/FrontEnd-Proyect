@@ -15,12 +15,10 @@ export default function products() {
   const { auth, logout, setReloadUser } = useAuth();
   const router = useRouter();
 
-  console.log(products);
 
   useEffect(async () => {
     try {
       const response = await Product.getProducts();
-      console.log(response.data.data);
 
       if (size(response.data.data) > 0) {
         setProducts(response.data.data);

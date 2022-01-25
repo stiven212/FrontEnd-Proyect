@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Row, Col, Input, Image } from "antd";
+import { Row, Col, Input, Image } from "antd";
 import Link from "next/link";
-import { AudioOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
 
 const { Search } = Input;
@@ -48,11 +47,9 @@ function Searchc() {
     setLoad(true);
   }, [searchStr]);
 
-  // console.log(searchStr);
 
   const data = (value) => {
     setSearchStr(value.target.value);
-    console.log(searchStr);
   };
   return (
     <Search

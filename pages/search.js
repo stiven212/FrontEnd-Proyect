@@ -12,7 +12,6 @@ export default function search() {
 
   const { query } = useRouter();
 
-  console.log(query.query);
   useEffect(() => {
     document.getElementById("search-product").focus();
   }, []);
@@ -21,7 +20,6 @@ export default function search() {
     try {
       if (size(query.query) > 0) {
         const response = await Product.searchProduct(query.query);
-        console.log(response.data.data);
         if (size(response.data.data) > 0) setProducts(response.data.data);
         else setProducts([]);
       } else {

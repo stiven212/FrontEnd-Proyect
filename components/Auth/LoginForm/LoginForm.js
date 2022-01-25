@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Input } from "antd";
-//import { useAuth } from "../../../contexts/auth";
+import { Form, Button, Input , message} from "antd";
 import useAuth from "../../../hooks/useAuth";
 import User from "../../../api/user";
 import { useRouter } from "next/router";
@@ -8,7 +7,6 @@ import { useRouter } from "next/router";
 export default function LoginForm(props) {
   const { showRegisterForm, showForgotForm, onCloseModal } = props;
   const [loading, setLoading] = useState(false);
-  // const auth = useAuth();
   const [result, setResult] = useState("");
   const [userInfo, setUserInfo] = useState(null);
 
@@ -22,13 +20,11 @@ export default function LoginForm(props) {
     setResult("Ingresando");
 
     try {
-      console.log(formData);
       const userData = {
         ...formData,
       };
 
       const response = await User.login(userData);
-      console.log("response", response);
       login(response.data.token);
 
       setUserInfo(response.data);
@@ -39,6 +35,7 @@ export default function LoginForm(props) {
     } catch (e) {
       console.log("error");
       setResult("Credenciales incorrectas");
+      message.error("Credenciales invalidas")
     }
   };
 
@@ -72,7 +69,7 @@ export default function LoginForm(props) {
             Registrarse
           </Button>
           <div>
-            <Button htmlType="submit" className="submit">
+            <Button htmlType="submit" className="submit" loading={loading}>
               Ingresar
             </Button>
             <Button type="link" onClick={showForgotForm}>
@@ -82,13 +79,7 @@ export default function LoginForm(props) {
         </div>
       </Form.Item>
 
-      <h1>{result}</h1>
-      {userInfo && (
-        <div>
-          Nombre: {userInfo.name}
-          token : {userInfo.token}
-        </div>
-      )}
+      
     </Form>
   );
 }

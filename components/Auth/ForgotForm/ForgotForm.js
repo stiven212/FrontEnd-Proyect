@@ -8,7 +8,6 @@ export default function ForgotForm(props) {
 
   const onFinish = async (formData) => {
     try {
-      console.log(formData);
       setResult("");
       const userData = {
         ...formData,
@@ -16,7 +15,6 @@ export default function ForgotForm(props) {
 
       setResult("Verifica tu correo");
       const response = await User.forgot(userData);
-      console.log("response", response);
     } catch (e) {
       console.log("error", e);
 

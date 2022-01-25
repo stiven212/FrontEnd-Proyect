@@ -16,14 +16,11 @@ export default function Order(props) {
 
   const [showModal, setShowModal] = useState(false);
 
-  console.log(detail);
 
-  // console.log(image1)
 
   useEffect(async () => {
     try {
       const response = await Detail.getOrder(id);
-      console.log(response.data);
       setDetail(response.data);
     } catch (e) {
       console.log(e);

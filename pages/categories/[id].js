@@ -21,12 +21,9 @@ export default function categorie() {
     if (!query.page || currentPages === 1) return 0;
     else return currentPages * start - start;
   };
-  console.log(getStartItem());
   useEffect(async () => {
     try {
       const response = await Product.getCategoryProducts(query.id, query.page);
-      console.log(response.data.data);
-      console.log(response.data.data.length);
       setProducts(response.data.data);
       setTotalProducts(response.data.data.length);
       setPage(query.id);
@@ -35,7 +32,6 @@ export default function categorie() {
     }
   }, [query]);
 
-  console.log(query.id);
   return (
     <BasicLayout className="categorie">
       <Seo title={`Categoria ${query.id}`} />

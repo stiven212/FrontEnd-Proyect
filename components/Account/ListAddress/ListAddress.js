@@ -12,7 +12,6 @@ export default function ListAddress(props) {
     try {
       const response = await Order.addresses();
       const address = response.data.data;
-      console.log(address);
 
       setAddresses(address);
       setReloadAddresses(false);

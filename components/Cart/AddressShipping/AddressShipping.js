@@ -9,7 +9,6 @@ export default function AddressShipping(props) {
   const { setAddress } = props;
 
   const [addresses, setAddresses] = useState(null);
-  console.log(addresses);
 
   const [addressActive, setAddressActive] = useState(null);
   useEffect(async () => {

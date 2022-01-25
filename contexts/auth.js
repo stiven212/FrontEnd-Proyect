@@ -45,7 +45,6 @@ function useAuthProvider() {
   async function register(data) {
     try {
       const response = await User.register(data);
-      console.log("response", response);
       handleUser(response.data);
       return response;
     } catch (error) {
@@ -129,7 +128,6 @@ function useAuthProvider() {
   async function getAuthenticatedUser() {
     try {
       const response = await User.getAuthenticatedUser();
-      console.log("response user", response.data);
       handleUser(response.data);
       return response;
     } catch (error) {

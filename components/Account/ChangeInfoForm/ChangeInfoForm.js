@@ -10,13 +10,11 @@ export default function ChangeInfoForm(props) {
   const onFinish = async (formData) => {
     setError("");
 
-    console.log(formData);
     const userData = {
       ...formData,
     };
     try {
       const response = await User.update(userData);
-      console.log(response);
       setError("");
       message.success("Datos actualizados correctamente", 5);
       setReloadUser(true);

@@ -4,8 +4,6 @@ import "antd/dist/antd.css";
 import PropTypes from "prop-types";
 import AuthContext from "../contexts/AuthContext";
 import CartContext from "../contexts/CartContext";
-import { AuthProvider } from "../contexts/auth";
-import { ToastContainer } from "react-toastify";
 import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
 import jwtDecode from "jwt-decode";
@@ -51,7 +49,6 @@ export default function MyApp({ Component, pageProps }) {
   const login = (token) => {
     setToken(token);
 
-    console.log(jwtDecode(token));
     setAuth({
       token,
       idUser: jwtDecode(token).prv,
@@ -120,17 +117,7 @@ export default function MyApp({ Component, pageProps }) {
       <AuthContext.Provider value={authData}>
         <CartContext.Provider value={cartData}>
           <Component {...pageProps} />
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar
-            newestOnTop
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss={false}
-            draggable
-            pauseOnHover
-          />
+          
         </CartContext.Provider>
       </AuthContext.Provider>
     </>

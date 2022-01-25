@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BasicLayout from "../layouts/BasicLayout";
-import { size, forEach } from "lodash";
+import { size } from "lodash";
 import WishList from "../api/wishlist";
 import useAuth from "../hooks/useAuth";
 import ListProducts from "../components/ListProducts";
@@ -17,10 +17,8 @@ export default function wishlist() {
 
       const wishId = response.data.data[0].id;
       setWishId(wishId);
-      // console.log(wishId);
 
       const response1 = await WishList.getFavorites(wishId);
-      console.log(response1.data.data);
       setProducts(response1.data.data);
     } catch (e) {
       console.log(e);

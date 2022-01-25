@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Image, Button, message } from "antd";
-import { set, size } from "lodash";
+import { size } from "lodash";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import WishList from "../../../api/wishlist";
@@ -22,8 +22,6 @@ export default function HeaderProduct(props) {
     try {
       // if(auth){}
       const response = await WishList.wish();
-      console.log(response.data);
-      console.log(response.data.data[0].id);
 
       const wishId = response.data.data[0].id;
 
@@ -31,13 +29,10 @@ export default function HeaderProduct(props) {
 
       const response1 = await WishList.isAdded(wishId, product.id);
 
-      console.log(response1.data);
       if (size(response1.data) > 0) setIsFavorite(true);
       else setIsFavorite(false);
     } catch (e) {
       if (e.response) {
-        console.log(e.response);
-        console.log(e.response.status);
         if (e.response.status === 404) {
           setIsFavorite(false);
         }

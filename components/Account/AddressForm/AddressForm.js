@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Input, message } from "antd";
-import User from "../../../api/user";
 import Order from "../../../api/address";
 
 export default function AddressForm(props) {
@@ -9,19 +8,16 @@ export default function AddressForm(props) {
   const [loading, setLoading] = useState(false);
 
   const onFinish = async (formData) => {
-    console.log(formData);
 
     setLoading(true);
     !newAddress ? updateAddress(formData) : createAddress(formData);
   };
 
   const createAddress = async (formData) => {
-    console.log(formData);
 
     try {
       const response = await Order.newAddress(formData);
 
-      console.log("response", response);
 
       message.success("Dirección creada correctamente");
       setLoading(false);
@@ -35,11 +31,9 @@ export default function AddressForm(props) {
   };
 
   const updateAddress = async (formData) => {
-    console.log(formData);
 
     try {
       const response = await Order.updateAddress(address.id, formData);
-      // console.log(response);
       message.success("Dirección actualizada correctamente");
 
       setLoading(false);

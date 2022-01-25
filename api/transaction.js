@@ -7,7 +7,6 @@ export default function PayPhone(data, value) {
     //amountWithoutTax: cost,
     amountWithTax: cost - cost * 0.12,
     Tax: cost * 0.12,
-    email: "stiven.lopez212@gmail.com",
     clientTransactionId: data,
     //  clientTransactionId: "Pruebasx0077",
     responseUrl: "http://localhost:3000/cart",
@@ -30,7 +29,6 @@ export default function PayPhone(data, value) {
     },
     error: function (respuesta) {
       alert("Error en la llamada " + respuesta.responseJSON.message);
-      console.log(respuesta);
       // document.getElementById('status').innerHTML = respuesta.responseJSON.message;
     },
   });
@@ -54,7 +52,6 @@ export function Confirmation(router) {
     },
     success: function Confirmation(respuesta) {
       var estado = respuesta.transactionStatus;
-      console.log(estado);
       alert("pago procesado");
     },
     error: function (respuesta) {

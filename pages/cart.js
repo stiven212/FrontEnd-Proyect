@@ -51,7 +51,6 @@ function FullCart(props) {
     }
   }, [router.query]);
 
-  console.log(address);
   useEffect(async () => {
     try {
       const productsTemp = [];

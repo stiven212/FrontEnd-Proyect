@@ -1,25 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Input, message } from "antd";
 import { useRouter } from "next/router";
-import { useAuth } from "../../../contexts/auth";
-import api from "../../../api/api";
 import User from "../../../api/user";
-import Routes from "../../../constants/Routes";
 import { toast } from "react-toastify";
 import WishList from "../../../api/wishlist";
 
 export default function RegisterForm(props) {
-  //  const { session} = useSession();
   const router = useRouter();
 
   const { showLoginForm } = props;
 
-  // const validateMessages = {
-  //     required: '${label} is required!',
-  //     types:{
-  //         email: '${label} is not a valid email!'
-  //     }
-  // }
 
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,14 +17,7 @@ export default function RegisterForm(props) {
   const [errors, setErrors] = useState("");
   const [userInfo, setUserInfo] = useState(null);
 
-  // const {register} = useAuth();
-
-  // useEffect(() => {
-
-  //     if (!session) {
-  //         router.push(Routes.LOGIN);
-  //     }
-  // });
+ 
 
   const onFinish = async (formData) => {
     setLoading(true);
@@ -45,14 +28,12 @@ export default function RegisterForm(props) {
     setErrors("");
 
     try {
-      console.log(formData);
 
       const userData = {
         ...formData,
       };
       const response = await User.register(userData);
 
-      console.log("response", response);
 
       setUserInfo(response.data);
 
@@ -60,10 +41,8 @@ export default function RegisterForm(props) {
 
       if (response.data) {
         const wish = await WishList.createWish();
-        console.log(wish);
         showLoginForm();
       }
-      // console.log(response.data.email);
       setErrors("");
 
       message.success("Registro exitoso", 4);
@@ -82,7 +61,6 @@ export default function RegisterForm(props) {
       if (response) {
         if (response.data.errors) {
           const errors = response.data.errors;
-          // const errorList = Object.values(errors);
           const newErrorList = [];
 
           for (let field in errors) {
@@ -171,23 +149,7 @@ export default function RegisterForm(props) {
           </Button>
         </div>
       </Form.Item>
-      <h1>{result}</h1>
-      {userInfo && (
-        <div>
-          Nombre: {userInfo.name}
-          token : {userInfo.token}
-        </div>
-      )}
-      {/* 
-                {errorsList.length > 0 && (
-          <ul>
-            {errorsList.map((error) => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
-        )} */}
-
-      {errors.length > 0 && <h1>{errors}</h1>}
+      
     </Form>
   );
 }

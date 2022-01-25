@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Menu, Col, Row, Button, Grid, Drawer } from "antd";
+import { Layout, Menu, Col, Row, Grid, Drawer } from "antd";
 import Link from "next/link";
 import {
   UserOutlined,
@@ -27,17 +27,13 @@ export default function MenuWeb() {
   const { useBreakpoint } = Grid;
 
   const screens = useBreakpoint();
-  console.log(screens);
-  // const {getAuthenticatedUser} = User();
   const [user, setUser] = useState(undefined);
 
   useEffect(() => {
     (async () => {
       try {
         const response = await User.me(logout);
-        // const response = await User.getAuthenticatedUser();
         setUser(response);
-        console.log(response);
       } catch (e) {
         console.log(e);
       }
@@ -48,22 +44,13 @@ export default function MenuWeb() {
     try {
       const response = await Category.categories();
 
-      //   console.log('response', response.data);
-      //setCategories(response.data);
 
       let a = [];
       for (var i = 0; i <= 4; i++) {
-        //     console.log(response.data[i])
         a.push(response.data[i]);
       }
 
-      console.log(a);
-
-      //    a.sort(function(a,b){
-
-      //     return b.id-a.id;
-      //    })
-      console.log(a);
+     
       setCategories(a);
     } catch (error) {
       console.log("error", error);

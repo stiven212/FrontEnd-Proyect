@@ -13,7 +13,6 @@ import Seo from "../components/Seo";
 export default function Home() {
   const { auth } = useAuth();
 
-  console.log(auth);
 
   return (
     <BasicLayout className="home">

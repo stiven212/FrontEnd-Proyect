@@ -4,12 +4,9 @@ import Head from "next/head";
 import PayPhone from "../../../api/transaction";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { forEach } from "lodash";
-import PayPal from "../../PayPal";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useRouter } from "next/router";
 import Detail from "../../../api/order";
 import { size } from "lodash";
-import Confirmation from "../../../api/transaction";
 import $ from "jquery";
 import useCart from "../../../hooks/useCart";
 import { message } from "antd";
@@ -25,14 +22,9 @@ export default function Payment(props) {
   const { removeAllProductsCart } = useCart();
   const router = useRouter();
 
-  console.log(products);
 
-  console.log(address.address);
-  console.log(dataName);
 
-  console.log(totalPrice);
 
-  console.log(payment);
 
   useEffect(async () => {
     try {
@@ -54,23 +46,18 @@ export default function Payment(props) {
           },
           success: function Confirmation(respuesta) {
             var estado = respuesta.transactionStatus;
-            console.log(estado);
             setpayment(estado);
 
             message.loading("Generando orden de compra", 1.4);
           },
           error: function (respuesta) {
             alert("Error en la llamada " + respuesta.responseText);
-            console.log(respuesta);
             setpayment(null);
           },
         });
       }
 
       if (router.query.id && totalPrice > 0) {
-        console.log(router.query.id);
-        console.log(parseInt(router.query.id));
-        console.log(payment);
         if (router.query.id === "0") {
           console.log("Transaccion cancelada");
 
@@ -84,17 +71,13 @@ export default function Payment(props) {
             total: totalPrice.toFixed(2),
           };
           const response = await Detail.newOrder(address.id, data);
-          console.log(response);
-          console.log(response.status);
 
           const orderId = response.data.id;
           if (response.status === 201) {
             for await (const product of products) {
-              console.log(product.id);
 
               const response1 = await Detail.addProducts(orderId, product.id);
 
-              console.log(response1);
             }
           }
 
@@ -118,8 +101,6 @@ export default function Payment(props) {
     setdataName(data);
   }, [address]);
 
-  console.log(products);
-  console.log(totalPrice);
 
   useEffect(() => {
     let price = 0;
@@ -146,38 +127,7 @@ export default function Payment(props) {
               Pago con tarjeta credito/Debito
             </Button>
 
-            {/* {checkout ? (
-                                <PayPal totalPrice={totalPrice} setcheckout={setcheckout}/>
-                                ) : (
-                                    <Button onClick={()=>{
-                                        setcheckout(true);
-                                    }}>
-                                PayPal checkout
-                            </Button>
-                        )} */}
-
-            {/* <PayPalScriptProvider options={{ "client-id": "test" }}>
-                            <PayPalButtons
-                                createOrder={(data, actions) => {
-                                    return actions.order.create({
-                                        purchase_units: [
-                                            {
-                                                amount: {
-                                                    value: totalPrice,
-                                                }
-                                            }
-                                        ]
-                                    });
-                                }}
-                                onApprove={(data, actions) => {
-                                    return actions.order.capture().then((details) => {
-                                        const name = details.payer.name.given_name;
-                                        alert(`Transaction completed by ${name}`);
-                                        console.log(details.status)
-                                    });
-                                }}
-                            />
-                        </PayPalScriptProvider>   */}
+          
           </div>
         </div>
       </div>

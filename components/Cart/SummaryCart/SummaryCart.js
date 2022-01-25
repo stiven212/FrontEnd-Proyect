@@ -4,8 +4,6 @@ import { forEach, map, size } from "lodash";
 import useCart from "../../../hooks/useCart";
 import { DeleteOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
-import $ from "jquery";
-import Detail from "../../../api/order";
 
 export default function SummaryCart(props) {
   const { products, reloadCart, setReloadCart } = props;
@@ -17,7 +15,6 @@ export default function SummaryCart(props) {
 
   const { removeProductCart } = useCart();
 
-  console.log(products);
   useEffect(() => {
     let price = 0;
     forEach(products, (product) => {
@@ -28,7 +25,6 @@ export default function SummaryCart(props) {
 
   const removeProduct = (product) => {
     removeProductCart(product);
-    // console.log(product)
     setReloadCart(true);
   };
   const columns = [
