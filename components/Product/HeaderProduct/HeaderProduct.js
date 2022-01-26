@@ -18,26 +18,31 @@ export default function HeaderProduct(props) {
 
   const { auth, logout } = useAuth();
 
-  useEffect(async () => {
-    try {
-      // if(auth){}
-      const response = await WishList.wish();
+  useEffect( () => {
+    const getData = async () => {
 
-      const wishId = response.data.data[0].id;
-
-      setWishId(wishId);
-
-      const response1 = await WishList.isAdded(wishId, product.id);
-
-      if (size(response1.data) > 0) setIsFavorite(true);
-      else setIsFavorite(false);
-    } catch (e) {
-      if (e.response) {
-        if (e.response.status === 404) {
-          setIsFavorite(false);
+      try {
+        // if(auth){}
+        const response = await WishList.wish();
+        
+        const wishId = response.data.data[0].id;
+        
+        setWishId(wishId);
+        
+        const response1 = await WishList.isAdded(wishId, product.id);
+        
+        if (size(response1.data) > 0) setIsFavorite(true);
+        else setIsFavorite(false);
+      } catch (e) {
+        if (e.response) {
+          if (e.response.status === 404) {
+            setIsFavorite(false);
+          }
         }
       }
-    }
+    };
+    getData();
+
   }, [product]);
 
   return (
