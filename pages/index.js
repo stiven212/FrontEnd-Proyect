@@ -4,7 +4,7 @@ import { Row, Col, Divider } from "antd";
 import { Carousel } from "antd";
 import { Image } from "antd";
 import { Button } from "antd";
-import BasicModal from "../../tienda/components/Modal/BasicModal";
+import BasicModal from "../components/Modal/BasicModal";
 import Auth from "../components/Auth";
 import Link from "next/link";
 import useAuth from "../hooks/useAuth";

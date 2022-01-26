@@ -7,7 +7,7 @@ import CartContext from "../contexts/CartContext";
 import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
 import jwtDecode from "jwt-decode";
-import { setToken, getToken, removeToken } from "../../tienda/api/token";
+import { setToken, getToken, removeToken } from "../api/token";
 import { useRouter } from "next/router";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
