@@ -16,18 +16,22 @@ const  Search = () => {
     document.getElementById("search-product").focus();
   }, []);
 
-  useEffect(async () => {
-    try {
-      if (size(query.query) > 0) {
-        const response = await Product.searchProduct(query.query);
-        if (size(response.data.data) > 0) setProducts(response.data.data);
-        else setProducts([]);
-      } else {
-        setProducts([]);
+  useEffect( () => {
+    const getData = async () => {
+
+      try {
+        if (size(query.query) > 0) {
+          const response = await Product.searchProduct(query.query);
+          if (size(response.data.data) > 0) setProducts(response.data.data);
+          else setProducts([]);
+        } else {
+          setProducts([]);
+        }
+      } catch (e) {
+        console.log(e);
       }
-    } catch (e) {
-      console.log(e);
-    }
+    };
+    getData();
   }, [query]);
   return (
     <BasicLayout className="search">
