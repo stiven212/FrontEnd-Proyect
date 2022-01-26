@@ -10,13 +10,15 @@ import { message } from "antd";
 
 import Head from "next/head";
 
-export default function cart() {
+const  cart = () => {
   const { getProductsCart } = useCart();
 
   const products = getProductsCart();
 
   return !products ? <EmptyCart /> : <FullCart products={products} />;
 }
+
+export default cart;
 
 function EmptyCart() {
   return (
@@ -37,32 +39,43 @@ function FullCart(props) {
   const router = useRouter();
 
   useEffect(() => {
-    if (router.query.id) {
-      if (router.query.id !== "0") {
-        //alert('Seleccione direccion de envio para continuar con la compra')
-        message.info(
-          "Para confirmar la compra selecciona una dirección de envio",
-          5
-        );
-      } else {
-        // alert('No se realizo la compra')
-        message.warn("Pago no realizado");
-      }
-    }
+    const getData = async() =>{
+
+      if (router.query.id) {
+        if (router.query.id !== "0") {
+          //alert('Seleccione direccion de envio para continuar con la compra')
+          message.info(
+            "Para confirmar la compra selecciona una dirección de envio",
+            5
+            );
+          } else {
+            // alert('No se realizo la compra')
+            message.warn("Pago no realizado");
+          }
+        }
+      };
+
+      getData();
   }, [router.query]);
 
-  useEffect(async () => {
-    try {
-      const productsTemp = [];
-      for await (const product of products) {
-        const response = await Product.getProduct(product);
-        productsTemp.push(response.data);
+  useEffect(() => {
+    const getData = async () => {
+
+      try {
+        const productsTemp = [];
+        for await (const product of products) {
+          const response = await Product.getProduct(product);
+          productsTemp.push(response.data);
+          console.log("it works too")
+        }
+        setProductsData(productsTemp);
+      } catch (e) {
+        console.log(e.response);
       }
-      setProductsData(productsTemp);
-    } catch (e) {
-      console.log(e.response);
+      setReloadCart(false);
     }
-    setReloadCart(false);
+
+    getData();
   }, [reloadCart]);
   return (
     <>

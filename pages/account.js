@@ -10,20 +10,24 @@ import BasicModal from "../components/Modal/BasicModal";
 import AddressForm from "../components/Account/AddressForm/AddressForm";
 import ListAddress from "../components/Account/ListAddress";
 
-export default function account() {
-  const router = useRouter();
-
+const account = () => {
+  
   const [user, setUser] = useState(undefined);
   const { auth, logout, setReloadUser } = useAuth();
-
+  const router = useRouter();
+  
   console.log(user);
-  useEffect(async () => {
-    try {
-      const response = await User.me(logout);
-      setUser(response || null);
-    } catch (e) {
-      console.log(e);
+  useEffect( () => {
+    const  getData = async () => {
+
+      try {
+        const response = await User.me(logout);
+        setUser(response || null);
+      } catch (e) {
+        console.log(e);
+      }
     }
+    getData();
   }, [auth]);
 
   if (user === undefined) return null;
@@ -44,6 +48,8 @@ export default function account() {
     </BasicLayout>
   );
 }
+
+export default account;
 
 function Configuration(props) {
   const { user, logout, setReloadUser } = props;

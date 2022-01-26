@@ -111,7 +111,7 @@ export default function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Insignia</title>
-        <script src="https://pay.payphonetodoesposible.com/api/button/js?appId=EFqKQbp9SEeThmBIj649w"></script>
+        {/* <script src="https://pay.payphonetodoesposible.com/api/button/js?appId=EFqKQbp9SEeThmBIj649w"></script> */}
         {/* <link rel="icon" href='/insignia.png' /> */}
       </Head>
       <AuthContext.Provider value={authData}>

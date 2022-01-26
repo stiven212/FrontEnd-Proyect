@@ -33,19 +33,20 @@ function Network() {
   return (
     <ul>
       <li>
-        <a href="https://www.facebook.com/insigniaestampados" target="_blank">
+        <a href="https://www.facebook.com/insigniaestampados" target="_blank"  rel="noreferrer">
           <FacebookOutlined style={{ fontSize: "26px", color: "#fff" }} />
         </a>
       </li>
       <li>
-        <a href="https://www.instagram.com/disenoxtremo7/" target="_blank">
+        <a href="https://www.instagram.com/disenoxtremo7/" target="_blank"  rel="noreferrer">
           <InstagramOutlined style={{ fontSize: "26px", color: "#fff" }} />
         </a>
       </li>
       <li>
         <a
           href="https://api.whatsapp.com/send?phone=593993818915&app=facebook&entry_point=page_cta"
-          target="_blank"
+          target="_blank" 
+          rel="noreferrer"
         >
           <WhatsAppOutlined style={{ fontSize: "26px", color: "#fff" }} />
         </a>

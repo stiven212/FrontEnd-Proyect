@@ -19,12 +19,19 @@ export default function Order(props) {
 
 
   useEffect(async () => {
-    try {
-      const response = await Detail.getOrder(id);
-      setDetail(response.data);
-    } catch (e) {
-      console.log(e);
-    }
+
+    const getData = async () => {
+
+      try {
+        const response = await Detail.getOrder(id);
+        setDetail(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    getData();
+
   }, [order]);
 
   // if(!detail){

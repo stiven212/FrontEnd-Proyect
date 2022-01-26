@@ -10,14 +10,21 @@ export default function Producto() {
   const [product, setProduct] = useState(null);
   const { query } = useRouter();
 
-  useEffect(async () => {
-    try {
-      const response = await Product.getProduct(query.id);
-      console.log(response.data);
-      setProduct(response.data);
-    } catch (e) {
-      console.log(e);
-    }
+  useEffect( () => {
+
+    const getData = async () => {
+      
+      try {
+        const response = await Product.getProduct(query.id);
+        console.log(response.data);
+        setProduct(response.data);
+        console.log("it works")
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    getData();
   }, [query]);
   console.log(query);
 

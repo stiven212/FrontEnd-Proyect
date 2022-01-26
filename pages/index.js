@@ -106,6 +106,7 @@ function Genres() {
             width={200}
             preview={false}
             style={styles}
+            alt="Hombres"
             src="https://media.gq.com.mx/photos/616d8b8b7cf20cb28245520c/1:1/w_1999,h_1999,c_limit/ropa-casual-de-hombre-con-saco-como-combinar-con-que-usar.jpg"
             placeholder="blur"
           />
@@ -127,6 +128,7 @@ function Genres() {
             width={200}
             preview={false}
             style={styles}
+            alt="mujeres"
             src="https://www.myoutfie.com/historias/wp-content/uploads/2019/10/ropa-mujer-casual-5.jpg"
             placeholder="blur"
           />
@@ -148,6 +150,7 @@ function Genres() {
             width={200}
             preview={false}
             style={styles}
+            alt="ninos"
             src="https://i.pinimg.com/550x/d6/58/70/d65870a3279c9168b3a3406634d1b370.jpg"
             placeholder="blur"
           />
@@ -169,6 +172,7 @@ function Genres() {
             width={200}
             preview={false}
             style={styles}
+            alt="ninas"
             src="https://i.pinimg.com/originals/a0/26/17/a026174b67fb5027c443da5c22bdf850.jpg"
             placeholder="blur"
           />

@@ -6,23 +6,29 @@ import useAuth from "../hooks/useAuth";
 import ListProducts from "../components/ListProducts";
 import { Spin } from "antd";
 
-export default function wishlist() {
+const wishlist = () => {
   const [products, setProducts] = useState(null);
-  const { auth, logout } = useAuth();
+  // const { auth, logout } = useAuth();
   const [wishId, setWishId] = useState(0);
 
-  useEffect(async () => {
-    try {
-      const response = await WishList.wish();
+  useEffect( () => {
 
-      const wishId = response.data.data[0].id;
-      setWishId(wishId);
+    const getData = async () => {
 
-      const response1 = await WishList.getFavorites(wishId);
-      setProducts(response1.data.data);
-    } catch (e) {
-      console.log(e);
-    }
+      try {
+        const response = await WishList.wish();
+        
+        const wishId = response.data.data[0].id;
+        setWishId(wishId);
+        
+        const response1 = await WishList.getFavorites(wishId);
+        setProducts(response1.data.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    getData();
   }, []);
 
   return (
@@ -43,3 +49,5 @@ export default function wishlist() {
     </BasicLayout>
   );
 }
+
+export default wishlist;

@@ -8,7 +8,7 @@ import ListProducts from "../../components/ListProducts";
 import Pagination from "../../components/Pagination";
 import Seo from "../../components/Seo";
 
-export default function categorie() {
+const categorie = () => {
   const { query } = useRouter();
 
   const [products, setProducts] = useState(null);
@@ -21,15 +21,21 @@ export default function categorie() {
     if (!query.page || currentPages === 1) return 0;
     else return currentPages * start - start;
   };
-  useEffect(async () => {
-    try {
-      const response = await Product.getCategoryProducts(query.id, query.page);
-      setProducts(response.data.data);
-      setTotalProducts(response.data.data.length);
-      setPage(query.id);
-    } catch (e) {
-      console.log(e);
-    }
+  useEffect( () => {
+
+    const getData = async () =>{
+
+      try {
+        const response = await Product.getCategoryProducts(query.id, query.page);
+        setProducts(response.data.data);
+        setTotalProducts(response.data.data.length);
+        setPage(query.id);
+        console.log("it work")
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getData();
   }, [query]);
 
   return (
@@ -54,3 +60,6 @@ export default function categorie() {
     </BasicLayout>
   );
 }
+
+
+export default categorie;

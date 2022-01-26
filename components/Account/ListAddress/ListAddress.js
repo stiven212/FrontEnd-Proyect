@@ -8,16 +8,21 @@ export default function ListAddress(props) {
 
   const [addresses, setAddresses] = useState(null);
 
-  useEffect(async () => {
-    try {
-      const response = await Order.addresses();
-      const address = response.data.data;
+  useEffect( () => {
 
-      setAddresses(address);
-      setReloadAddresses(false);
-    } catch (error) {
-      console.log(error.response);
-    }
+    const getData = async () => {
+
+      try {
+        const response = await Order.addresses();
+        const address = response.data.data;
+        
+        setAddresses(address);
+        setReloadAddresses(false);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+    getData();
   }, [reloadAddresses]);
 
   if (!addresses) return null;

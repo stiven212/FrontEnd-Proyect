@@ -6,17 +6,23 @@ import Detail from "../api/order";
 import Order from "../components/Orders/Order";
 import Seo from "../components/Seo";
 
-export default function Orders() {
+const Orders = () =>  {
   const [orders, setOrders] = useState(null);
 
-  useEffect(async () => {
-    try {
-      const response = await Detail.getOrders();
-      console.log(response.data.data);
-      setOrders(response.data.data);
-    } catch (error) {
-      console.log(error.response);
-    }
+  useEffect(() => {
+
+    const getData = async () => {
+
+      try {
+        const response = await Detail.getOrders();
+        console.log(response.data.data);
+        setOrders(response.data.data);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+
+    getData();
   }, []);
 
   return (
@@ -38,6 +44,8 @@ export default function Orders() {
     </BasicLayout>
   );
 }
+
+export default Orders;
 
 function OrderList(props) {
   const { orders } = props;
