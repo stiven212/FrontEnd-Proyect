@@ -111,7 +111,7 @@ function Genres() {
           />
           <Link href="/categories/9">
             <a>
-              <div class="overlay">
+              <div className="overlay">
                 <div>Hombres</div>
               </div>
             </a>
@@ -132,7 +132,7 @@ function Genres() {
           />
           <Link href="/categories/8">
             <a>
-              <div class="overlay">
+              <div className="overlay">
                 <div >Mujeres</div>
               </div>
             </a>
@@ -153,7 +153,7 @@ function Genres() {
           />
           <Link href="/categories/7">
             <a>
-              <div class="overlay">
+              <div className="overlay">
                 <div>Niños</div>
               </div>
             </a>
@@ -174,7 +174,7 @@ function Genres() {
           />
           <Link href="/categories/7">
             <a>
-              <div class="overlay">
+              <div className="overlay">
                 <div >Niñas</div>
               </div>
             </a>
@@ -243,7 +243,7 @@ function Categories() {
           />
           <Link href="/categories/1">
             <a>
-              <div class="overlay">
+              <div className="overlay">
                 <div >Camisetas</div>
               </div>
             </a>
@@ -265,7 +265,7 @@ function Categories() {
           />
           <Link href="/categories/2">
             <a>
-              <div class="overlay">
+              <div className="overlay">
                 <div >Gorras</div>
               </div>
             </a>
@@ -287,7 +287,7 @@ function Categories() {
 
           <Link href="/categories/3">
             <a>
-              <div class="overlay">
+              <div className="overlay">
                 <div >Tazas</div>
               </div>
             </a>
@@ -309,7 +309,7 @@ function Categories() {
 
           <Link href="/categories/4">
             <a>
-              <div class="overlay">
+              <div className="overlay">
                 <div >Macarillas</div>
               </div>
             </a>
