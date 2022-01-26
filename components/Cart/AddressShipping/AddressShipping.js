@@ -11,13 +11,18 @@ export default function AddressShipping(props) {
   const [addresses, setAddresses] = useState(null);
 
   const [addressActive, setAddressActive] = useState(null);
-  useEffect(async () => {
-    try {
-      const response = await Order.addresses();
-      setAddresses(response.data.data || []);
-    } catch (error) {
-      console.log(error.response);
-    }
+  useEffect( () => {
+
+    const getData = async () => {
+
+      try {
+        const response = await Order.addresses();
+        setAddresses(response.data.data || []);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+    getData();
   }, []);
   return (
     <div className="address-shipping">

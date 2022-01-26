@@ -10,7 +10,7 @@ import BasicModal from "../components/Modal/BasicModal";
 import AddressForm from "../components/Account/AddressForm/AddressForm";
 import ListAddress from "../components/Account/ListAddress";
 
-const account = () => {
+const Account = () => {
   
   const [user, setUser] = useState(undefined);
   const { auth, logout, setReloadUser } = useAuth();
@@ -49,7 +49,7 @@ const account = () => {
   );
 }
 
-export default account;
+export default Account;
 
 function Configuration(props) {
   const { user, logout, setReloadUser } = props;
