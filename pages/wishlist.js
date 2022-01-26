@@ -6,7 +6,7 @@ import useAuth from "../hooks/useAuth";
 import ListProducts from "../components/ListProducts";
 import { Spin } from "antd";
 
-const wishlist = () => {
+const  Wisheslist = () => {
   const [products, setProducts] = useState(null);
   // const { auth, logout } = useAuth();
   const [wishId, setWishId] = useState(0);
@@ -50,4 +50,4 @@ const wishlist = () => {
   );
 }
 
-export default wishlist;
+export default Wisheslist;

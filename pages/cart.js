@@ -10,7 +10,7 @@ import { message } from "antd";
 
 import Head from "next/head";
 
-const  cart = () => {
+const  Cart = () => {
   const { getProductsCart } = useCart();
 
   const products = getProductsCart();
@@ -18,7 +18,7 @@ const  cart = () => {
   return !products ? <EmptyCart /> : <FullCart products={products} />;
 }
 
-export default cart;
+export default Cart;
 
 function EmptyCart() {
   return (

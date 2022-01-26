@@ -7,7 +7,7 @@ import { size } from "lodash";
 import ListProducts from "../components/ListProducts";
 import Seo from "../components/Seo";
 
-export default function search() {
+const  Search = () => {
   const [products, setProducts] = useState(null);
 
   const { query } = useRouter();
@@ -42,3 +42,5 @@ export default function search() {
     </BasicLayout>
   );
 }
+
+export default Search;

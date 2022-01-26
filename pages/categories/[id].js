@@ -8,7 +8,7 @@ import ListProducts from "../../components/ListProducts";
 import Pagination from "../../components/Pagination";
 import Seo from "../../components/Seo";
 
-const categorie = () => {
+const Categorie = () => {
   const { query } = useRouter();
 
   const [products, setProducts] = useState(null);
@@ -62,4 +62,4 @@ const categorie = () => {
 }
 
 
-export default categorie;
+export default Categorie;
