@@ -112,7 +112,7 @@ function Genres() {
           <Link href="/categories/9">
             <a>
               <div class="overlay">
-                <div class="text">Hombres</div>
+                <div>Hombres</div>
               </div>
             </a>
           </Link>
@@ -133,7 +133,7 @@ function Genres() {
           <Link href="/categories/8">
             <a>
               <div class="overlay">
-                <div class="text">Mujeres</div>
+                <div >Mujeres</div>
               </div>
             </a>
           </Link>
@@ -154,7 +154,7 @@ function Genres() {
           <Link href="/categories/7">
             <a>
               <div class="overlay">
-                <div class="text">Niños</div>
+                <div>Niños</div>
               </div>
             </a>
           </Link>
@@ -175,7 +175,7 @@ function Genres() {
           <Link href="/categories/7">
             <a>
               <div class="overlay">
-                <div class="text">Niñas</div>
+                <div >Niñas</div>
               </div>
             </a>
           </Link>
@@ -244,7 +244,7 @@ function Categories() {
           <Link href="/categories/1">
             <a>
               <div class="overlay">
-                <div class="text">Camisetas</div>
+                <div >Camisetas</div>
               </div>
             </a>
           </Link>
@@ -266,7 +266,7 @@ function Categories() {
           <Link href="/categories/2">
             <a>
               <div class="overlay">
-                <div class="text">Gorras</div>
+                <div >Gorras</div>
               </div>
             </a>
           </Link>
@@ -288,7 +288,7 @@ function Categories() {
           <Link href="/categories/3">
             <a>
               <div class="overlay">
-                <div class="text">Tazas</div>
+                <div >Tazas</div>
               </div>
             </a>
           </Link>
@@ -310,7 +310,7 @@ function Categories() {
           <Link href="/categories/4">
             <a>
               <div class="overlay">
-                <div class="text">Macarillas</div>
+                <div >Macarillas</div>
               </div>
             </a>
           </Link>
